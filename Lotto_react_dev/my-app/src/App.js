@@ -23,6 +23,12 @@ function App() {
       <div className="App">
         <header className="App-header">
           이 기기의 IP주소는 {ip}입니다.
+            <button onClick={() => window.open('https://naver.com', '_blank')}>[url 링크]</button>
+            <a href="https://google.com/"
+                target="_blank"
+                rel="noopener noreferrer">
+                Google
+            </a>
         </header>
       </div>
   );
