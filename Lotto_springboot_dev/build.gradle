@@ -25,6 +25,7 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     compileOnly 'org.springframework.boot:spring-boot-starter-mustache'
     compileOnly 'org.projectlombok:lombok:1.18.24'
+    compileOnly 'org.springframework.boot:spring-boot-starter-oauth2-client'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
 
     testCompileOnly 'org.projectlombok:lombok:1.18.16'
