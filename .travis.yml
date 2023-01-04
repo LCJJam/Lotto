@@ -13,8 +13,8 @@ cache:
     - '$HOME/Lotto_springboot_dev/.m2/repository'
     - '$HOME/Lotto_springboot_dev/.gradle'
 
-#before_install:
-#  - chmod +x Lotto_springboot_dev/gradlew
+before_install:
+  - chmod +x ./Lotto_springboot_dev/gradlew
 
 script: "./Lotto_springboot_dev/gradlew clean build"
 
