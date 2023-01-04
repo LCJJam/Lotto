@@ -14,9 +14,9 @@ cache:
     - '$HOME/Lotto_springboot_dev/.gradle'
 
 before_install:
-  - chmod +x gradlew
+  - chmod +x Lotto_springboot_dev/gradlew
 
-script: "./gradlew clean build"
+script: "./Lotto_springboot_dev/gradlew clean build"
 
 # CI 실행 완료 시 메일로 알람
 notifications:
