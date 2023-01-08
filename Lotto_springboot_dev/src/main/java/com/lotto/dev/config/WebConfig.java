@@ -16,8 +16,8 @@ public class WebConfig implements WebMvcConfigurer {
     private final LoginUserArgumentResolver loginUserArgumentResolver;
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/static/js/**")
-                .addResourceLocations("classpath:/static/js/")
+        registry.addResourceHandler("/**")
+                .addResourceLocations("classpath:/static//")
                 .setCachePeriod(20)
         ;
     }
