@@ -1,36 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-import customAxios from './customAxios';
-
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import BoardList from './routes/BoardList';
+import Home from './routes/Home';
+import React from 'react';
+import BoardDetail from './routes/BoardDetail';
+import BoardWrite from './routes/BoardWrite';
+import BoardUpdate from './routes/BoardUpdate';
 function App() {
-  // IP주소 변수 선언
-  const [ip, setIp] = useState('');
-
-  // IP주소 값을 설정합니다.
-  function callback(data) {
-    setIp(data);
-  }
-
-  // 첫번째 렌더링을 다 마친 후 실행합니다.
-  useEffect(
-      () => {
-        // 클라이언트의 IP주소를 알아내는 백엔드의 함수를 호출합니다.
-        customAxios('/ip', callback);
-      }, []
-  );
-
   return (
-      <div className="App">
-        <header className="App-header">
-          이 기기의 IP주소는 {ip}입니다.
-            <button onClick={() => window.open('https://naver.com', '_blank')}>[url 링크]</button>
-            <a href="https://google.com/"
-                target="_blank"
-                rel="noopener noreferrer">
-                Google
-            </a>
-        </header>
-      </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/board" element={<BoardList />} />
+        <Route path="/board/:idx" element={<BoardDetail />} />
+        <Route path="/write" element={<BoardWrite />} />
+        <Route path="/update/:idx" element={<BoardUpdate />} />
+      </Routes>
+    </Router>
   );
 }
 
