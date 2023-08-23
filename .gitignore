@@ -4,4 +4,5 @@
 *.bin
 *.MF
 *.jar
-Lotto_springboot_dev/.gradle/*
+/Lotto_springboot_dev/.idea/
+/Lotto_springboot_dev/.gradle/
