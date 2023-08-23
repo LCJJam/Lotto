@@ -1,3 +1,4 @@
 /Lotto_springboot_dev/.idea/
+/Lotto_springboot_dev/.gradle/
 application-oauth.properties
 *.class
