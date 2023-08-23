@@ -16,27 +16,22 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    //implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.2'
+    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.2'
+    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.2'
 
     implementation 'com.h2database:h2'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'junit:junit:4.13.2'
-
-    implementation 'org.springframework.boot:spring-boot-starter-mustache'
-
-    implementation 'org.mariadb.jdbc:mariadb-java-client'
     compileOnly 'org.projectlombok:lombok:1.18.24'
-    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
-    testCompileOnly 'org.springframework.security:spring-security-test'
-    compileOnly 'org.springframework.session:spring-session-jdbc'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
 
-    testCompileOnly 'org.projectlombok:lombok:1.18.16'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
-
-    testImplementation 'org.hamcrest:hamcrest:2.2'
+    testImplementation 'org.springframework.security:spring-security-test'
 
     implementation 'org.slf4j:jul-to-slf4j:2.0.5'
 }

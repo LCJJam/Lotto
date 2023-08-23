@@ -1,0 +1,28 @@
+// SignUp
+POST http://localhost:8080/auth/signup
+Content-Type: application/json
+
+{
+  "email": "token-test2@test.com",
+  "nickname": "token-te",
+  "password": "hashed_password_1234"
+}
+
+###
+
+// Request
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+    "email": "token-test2@test.com",
+    "password": "hashed_password_1234"
+}
+
+###
+
+// Request
+GET http://localhost:8080/member/me
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI1IiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTY1NDI0NjMyOX0.ODqkBbI-x9RyU1i7iPG9NEKwe3zigTrLdzn49SBqlKNATrhlJLyPaR-LfdFf67JH-NprgWWNtTYesJ9eFkj0Lg
+
+
