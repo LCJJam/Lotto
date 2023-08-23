@@ -1,0 +1,7 @@
+*.gradle
+*.lock
+*.class
+*.bin
+*.MF
+*.jar
+Lotto_springboot_dev/.gradle/*

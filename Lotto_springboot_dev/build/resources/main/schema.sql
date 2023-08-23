@@ -3,6 +3,8 @@ CREATE TABLE Member (
                        nickname VARCHAR(50) NOT NULL,
                        email VARCHAR(100) NOT NULL,
                        password_hash VARCHAR(100) NOT NULL,
+                       password VARCHAR(100) ,
+                       authority VARCHAR(20) ,
                        registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                        last_login TIMESTAMP,
                        is_active BOOLEAN DEFAULT TRUE
