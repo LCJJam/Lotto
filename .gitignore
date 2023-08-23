@@ -6,3 +6,4 @@
 *.jar
 /Lotto_springboot_dev/.idea/
 /Lotto_springboot_dev/.gradle/
+.idea/workspace.xml
