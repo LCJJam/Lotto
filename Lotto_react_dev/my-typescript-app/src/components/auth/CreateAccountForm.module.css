@@ -1,0 +1,16 @@
+.auth {
+    padding: 16px;
+    background-color: #f5f5f5;
+}
+
+.control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+.action {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+}
