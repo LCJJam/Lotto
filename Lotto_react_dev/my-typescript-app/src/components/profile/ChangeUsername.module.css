@@ -1,0 +1,17 @@
+.form {
+    width: 500px;
+    height: 250px;
+    border: 1px solid black;
+}
+
+.control {
+    width: 500px;
+    height: 250px;
+    border: 1px solid black;
+}
+
+.action {
+    width: 500px;
+    height: 250px;
+    border: 1px solid black;
+}

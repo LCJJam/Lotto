@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES6",              // 컴파일된 JavaScript 버전
+    "module": "CommonJS",         // 모듈 시스템 (CommonJS, ESNext 등)
+    "strict": true,               // 엄격한 타입 검사
+    "esModuleInterop": true,      // CommonJS 모듈과 ES 모듈의 상호 운용성을 향상시키는 옵션
+    "skipLibCheck": true,         // 라이브러리 검사 스킵
+    "forceConsistentCasingInFileNames": true, // 파일명 대소문자 일관성 강제
+    "outDir": "./dist",           // 컴파일된 파일의 출력 디렉토리
+    "baseUrl": "./src",           // 절대경로 기준 디렉토리
+    "paths": {
+      "@/*": ["*"]                // @로 시작하는 경로에 대한 별칭 설정
+    },
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
+    "jsx": "react"
+  },
+  "include": ["**/*.ts", "**/*.tsx","declaration.d.ts"],    // 컴파일 포함 대상 파일 경로
+  "exclude": ["node_modules"],   // 컴파일 제외 대상 파일 경로
+}
