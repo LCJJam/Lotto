@@ -32,14 +32,13 @@ const AuthForm = () => {
       <h1>Login</h1>
       <form onSubmit={submitHandler}>
         <div className={classes.control}>
-          <label htmlFor="email">Your email</label>
-          <input type="email" id="email" required ref={emailInputRef} />
+          <input type="email" id="email" placeholder="아이디" required ref={emailInputRef} />
         </div>
         <div className={classes.control}>
-          <label htmlFor="password">Your password</label>
           <input
             type="password"
             id="password"
+            placeholder="패스워드"
             required
             ref={passwordInputRef}
           />
@@ -47,7 +46,6 @@ const AuthForm = () => {
         <div className={classes.action}>
           <button type="submit">Login</button>
           {isLoading && <p>Loading</p>}
-          <p>Create Account</p>
         </div>
       </form>
     </section>

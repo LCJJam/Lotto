@@ -1,11 +1,61 @@
 .auth {
-    background-color: blue;
+    background-color: gray;
+    display: block;
+    padding: 10px;
+}
+
+.auth h1 {
+    text-align: center;
 }
 
 .control {
-    background-color: blue;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.control input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    padding: 15px 35px 15px 50px;
+    text-align: left;
+    /* 수평 가운데 정렬을 위한 추가 스타일 */
+    display: block; /* display 속성을 block으로 설정하여 가로 공간을 차지하도록 함 */
+    margin: 0 auto; /* 수평 가운데 정렬을 위한 margin 설정 */
+}
+
+/* 반응형 스타일 설정 */
+@media (max-width: 500px) {
+    .input {
+        width: 100%; /* 500px 이하에서는 100%로 설정 */
+        max-width: 500px; /* 최대 너비 500px로 제한 */
+    }
 }
 
 .action {
-    background-color: blue;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.action button {
+    width: 270px;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    padding: 15px 35px 15px 35px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    /* 수평 가운데 정렬을 위한 추가 스타일 */
+    display: block; /* display 속성을 block으로 설정하여 가로 공간을 차지하도록 함 */
+    margin: 10px auto 10px auto; /* 수평 가운데 정렬을 위한 margin 설정 */
+    background-color: yellow;
+}
+
+@media (max-width: 500px) {
+    .button {
+        width: 100%; /* 500px 이하에서는 100%로 설정 */
+        max-width: 500px; /* 최대 너비 500px로 제한 */
+    }
 }

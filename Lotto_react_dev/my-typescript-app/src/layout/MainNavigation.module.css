@@ -1,7 +1,25 @@
 .header {
-    color: blue;
+    width: 100%;
+    display: block;
+    float: left;
+    background-color: white;
 }
 
 .logo {
-    width: 100%;
+    float: left;
+    list-style:none;
+    margin: 0 0 10px 20px;
+}
+
+.nav {
+    float: right;
+}
+
+.nav ul {
+    list-style: none;
+}
+
+.nav ul li {
+    margin-right: 20px;
+    float: left;
 }

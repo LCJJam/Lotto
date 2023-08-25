@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classes from './MainNavigation.module.css';
 import AuthContext from '../store/auth-context';
+import Logo from '../assets/images/lotto_icon.png';
 
 const MainNavigation = () => {
   const authCtx = useContext(AuthContext);
@@ -33,10 +34,10 @@ const MainNavigation = () => {
 
   return (
     <header className={classes.header}>
-      <Link to="/">
-        <div className={classes.logo}>Home</div>
+      <Link to="/" className={classes.logo}>
+        <img src={Logo} alt="로또 로고" width="50px"/>
       </Link>
-      <nav>
+      <nav className={classes.nav}>
         <ul>
           <li>{!isLogin && <Link to="/login">Login</Link>}</li>
           <li>{!isLogin && <Link to="signup">Sign-Up</Link>}</li>
