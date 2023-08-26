@@ -17,7 +17,4 @@ VALUES ('john_doe', 'token-test@test.com', 'hashed_password_123','ROLE_ADMIN', C
 INSERT INTO Member (nickname, email, password, authority, last_login)
 VALUES ('jane_smith', 'jane@example.com', 'hashed_password_456','ROLE_ADMIN', CURRENT_TIMESTAMP);
 
-INSERT INTO Member (nickname, email, password, authority, last_login)
-VALUES ('dlckd', 'dlckd125@nate.com', 'MTIzNA==','ROLE_ADMIN', CURRENT_TIMESTAMP);
-
 commit;
