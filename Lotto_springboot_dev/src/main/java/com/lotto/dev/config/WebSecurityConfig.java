@@ -37,6 +37,11 @@ public class WebSecurityConfig {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
                 .and()
+                .formLogin()
+                .usernameParameter("email")
+                .passwordParameter("password")
+
+                .and()
                 .headers()
                 .frameOptions().sameOrigin()
 
