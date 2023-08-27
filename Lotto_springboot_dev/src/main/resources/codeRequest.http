@@ -1,3 +1,15 @@
+// SignUp2
+POST http://localhost:8080/auth/signup
+Content-Type: application/json
+
+{
+  "email": "dlckd125@nate.com",
+  "nickname": "dlckd",
+  "password": "1234"
+}
+
+###
+
 // SignUp
 POST http://localhost:8080/auth/signup
 Content-Type: application/json
@@ -11,7 +23,7 @@ Content-Type: application/json
 ###
 
 // Request
-POST http://localhost:8080/auth/login
+POST http://172.30.1.99:8080/auth/login
 Content-Type: application/json
 
 {

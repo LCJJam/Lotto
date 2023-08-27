@@ -13,4 +13,12 @@ public class TokenDto {
     private String grantType;
     private String accessToken;
     private Long tokenExpiresIn;
+
+    public String toString(){
+
+        return "grantType :" + this.grantType + " \n" +
+                "accessToken :" + accessToken + " \n" +
+                "tokenExpiresIn :" + tokenExpiresIn
+                ;
+    }
 }
