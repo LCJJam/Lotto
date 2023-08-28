@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classes from './MainNavigation.module.css';
-import AuthContext from '../store/auth-context';
-import Logo from '../assets/images/lotto_icon.png';
+import AuthContext from '@store/auth-context';
+import Logo from '@images/lotto_icon.png';
 
 const MainNavigation = () => {
   const authCtx = useContext(AuthContext);
@@ -19,14 +19,16 @@ const MainNavigation = () => {
       console.log('start');
       authCtx.getUser();
     }
-  }, [isLogin]);
+  });
+  // }, [isLogin]);
 
   useEffect(() => {
     if (isGet) {
       console.log('get start');
       callback(authCtx.userObj.nickname);
     }
-  }, [isGet]);
+  });
+  // }, [isGet]);
 
   const toggleLogoutHandler = () => {
     authCtx.logout();

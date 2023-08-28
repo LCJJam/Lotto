@@ -11,9 +11,9 @@ interface FetchData {
 }
 
 const fetchAuth = async (fetchData: FetchData) => {
-   console.log(fetchData.method, fetchData.url);
+
   const method = fetchData.method;
-  const url = 'http://172.30.1.99:8080' + fetchData.url;
+  const url = fetchData.url;
   const data = fetchData.data;
   const header = fetchData.header;
 

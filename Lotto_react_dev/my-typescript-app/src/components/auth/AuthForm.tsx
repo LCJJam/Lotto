@@ -31,10 +31,14 @@ const AuthForm = () => {
     <section className={classes.auth}>
       <h1>Login</h1>
       <form onSubmit={submitHandler}>
+
         <div className={classes.control}>
+          <label>Email</label>
           <input type="email" id="email" placeholder="아이디" required ref={emailInputRef} />
         </div>
+
         <div className={classes.control}>
+          <label>Password</label>
           <input
             type="password"
             id="password"
