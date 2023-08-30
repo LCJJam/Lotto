@@ -1,0 +1,143 @@
+.content_wrap {
+    display: block;
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 70%;
+}
+
+.win_results {
+    display: block;
+    border-top: 1px solid #ddd;
+    background-color: #fff;
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 60px 60px 90px;
+    box-sizing: border-box;
+}
+
+.win_results h4 strong {color: red; font-weight: bold}
+
+.nums {
+    display: block;
+    box-sizing: border-box;
+    margin-top: 26px;
+}
+
+.ball_645 {
+    display: inline-block;
+    width: 100%;
+    font-weight: 700;
+    font-size: 28px;
+    color: #fff;
+}
+
+.ball_645 p span {
+    float: left;
+    width: 60px;
+    height: 60px;
+    line-height: 56px;
+    font-size: 28px;
+    border-radius: 100%;
+    margin-left: 20px;
+}
+
+.win {
+    display: block;
+    float: left;
+    position: relative;
+    color: black;
+
+}
+
+.win p {
+    float: left;
+    position: relative;
+    display: block;
+    line-height: 56px;
+    text-align: center;
+}
+
+.plus_sign {
+    color: gray;
+}
+
+.bonus:before {
+    width: 20px; height: 4px; margin: -2px 0 0 -10px;
+}
+
+.bonus:after {
+    content: ""; position: absolute;
+    left: -30px; top: 50%; background:#999;
+    width: 4px; height: 20px; margin: -10px 0 0 2px;
+}
+
+.ball_645 .ball1 {
+    background: #fbc400;
+}
+
+.ball_645 .ball2 {
+    background: #69c8f2;
+}
+
+.ball_645 .ball3 {
+    background: #e96353;
+}
+
+.ball_645 .ball4 {
+    background: #8f8f8f;
+}
+
+.ball_645 .ball5 {
+    background: #5ab545;
+}
+
+.tbl_data {
+    border-top: 1px solid #333;
+    table-layout: fixed;
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: separate;
+    margin: 0;
+    padding: 0;
+    display: table;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-color: gray;
+}
+
+.table_thead tr th {
+    padding: 13px 9px 15px;
+}
+
+.table_body tr td {
+    padding: 13px 9px 15px;
+}
+
+.td_center {
+    text-align: center;
+}
+
+.td_right {
+    text-align: right;
+}
+
+.col1 {
+    width: 85px;
+}
+
+.col2 {
+    width: 180px;
+}
+
+.col3 {
+    width: 145px;
+}
+
+.col4 {
+    width: 180px;
+}
+
+.col5 {
+    width: 110px;
+}
+

@@ -46,7 +46,7 @@ const CreateAccountForm = () => {
           <label htmlFor="nickname">NickName</label>
           <input type="text" id="nickname" required ref={nicknameInputRef} />
         </div>
-        <div className={classes.actions}>
+        <div className={classes.action}>
           <button type="submit">Submit</button>
         </div>
       </form>

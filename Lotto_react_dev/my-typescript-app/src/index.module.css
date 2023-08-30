@@ -1,0 +1,9 @@
+.backgroundImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('./assets/images/universe.jpeg');
+    background-size: cover; /* 이미지가 요소에 맞게 조절되도록 설정 */
+}

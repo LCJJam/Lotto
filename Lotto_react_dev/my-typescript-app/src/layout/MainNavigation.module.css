@@ -1,25 +1,58 @@
+/* Header CSS */
+
 .header {
     width: 100%;
-    display: block;
-    float: left;
-    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
 }
 
 .logo {
-    float: left;
-    list-style:none;
-    margin: 0 0 10px 20px;
+    margin-left: 15%;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.logo img {
+    width: 80px;
 }
 
 .nav {
-    float: right;
+    margin-left: auto; /* 변경된 부분: 우측으로 정렬 */
+    margin-right: 15%;
+    display: flex;
+    align-items: center;
 }
 
 .nav ul {
     list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
 }
 
-.nav ul li {
-    margin-right: 20px;
-    float: left;
+.nav li {
+    margin-right: 50px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.nav button {
+    display: inline-block;
+    padding: 8px 16px;
+    border: none;
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.nav button:hover {
+    background-color: #999;
 }

@@ -14,21 +14,21 @@ const MainNavigation = () => {
     setNickname(str);
   };
 
+  /* eslint-disable */
   useEffect(() => {
     if (isLogin) {
       console.log('start');
       authCtx.getUser();
     }
-  });
-  // }, [isLogin]);
+  }, [isLogin]);
+
 
   useEffect(() => {
     if (isGet) {
       console.log('get start');
       callback(authCtx.userObj.nickname);
     }
-  });
-  // }, [isGet]);
+  }, [isGet]);
 
   const toggleLogoutHandler = () => {
     authCtx.logout();
@@ -37,12 +37,13 @@ const MainNavigation = () => {
   return (
     <header className={classes.header}>
       <Link to="/" className={classes.logo}>
-        <img src={Logo} alt="로또 로고" width="50px"/>
+        <img src={Logo} alt="로또 로고" />
       </Link>
       <nav className={classes.nav}>
         <ul>
           <li>{!isLogin && <Link to="/login">Login</Link>}</li>
-          <li>{!isLogin && <Link to="signup">Sign-Up</Link>}</li>
+          <li>{!isLogin && <Link to="/signup">SignUp</Link>}</li>
+          <li>{!isLogin && <Link to="/findPwd">Find-Pwd</Link>}</li>
           <li>{isLogin && <Link to="/profile">{nickname}</Link>}</li>
           <li>
             {isLogin && <button onClick={toggleLogoutHandler}>Logout</button>}
