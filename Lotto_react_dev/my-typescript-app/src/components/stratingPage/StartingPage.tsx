@@ -33,24 +33,16 @@ const StartingPage = () => {
                     </div>
                 </div>
             </div>
-            <table className={'tbl_data'}>
+            <table className={classes.tbl_data}>
                 {/*<caption> 당첨금 정리 테이블 </caption>*/}
-                <colgroup>
-                    <span className={classes.col1}/>
-                    <span className={classes.col2}/>
-                    <span className={classes.col3}/>
-                    <span className={classes.col4}/>
-                    <span/>
-                    <span className={classes.col5}/>
-                </colgroup>
                 <thead className={classes.table_thead}>
                     <tr>
-                        <th scope='col'>순위</th>
-                        <th scope='col'>등위별 총 당첨금액</th>
-                        <th scope='col'>당첨게임 수</th>
-                        <th scope='col'>1게임당 당첨금액</th>
-                        <th scope='col'>당첨기준</th>
-                        <th scope='col'>비고</th>
+                        <th className={classes.col1}>순위</th>
+                        <th className={classes.col2}>등위별 총 당첨금액</th>
+                        <th className={classes.col3}>당첨게임 수</th>
+                        <th className={classes.col4}>1게임당 당첨금액</th>
+                        <th>당첨기준</th>
+                        <th className={classes.col5}>비고</th>
                     </tr>
                 </thead>
                 <tbody className={classes.table_body}>

@@ -2,7 +2,8 @@
     display: block;
     box-sizing: border-box;
     margin: 0 auto;
-    width: 70%;
+    width: 1000px;
+    /*width: 70%;*/
 }
 
 .win_results {
@@ -21,6 +22,7 @@
     display: block;
     box-sizing: border-box;
     margin-top: 26px;
+
 }
 
 .ball_645 {
@@ -31,6 +33,15 @@
     color: #fff;
 }
 
+.ball_645 p {
+    padding: 30px;
+    margin: 0;
+    border-radius: 30px;
+    background-color: #eadada;
+    font-weight: 300;
+    line-height: 22px;
+}
+
 .ball_645 p span {
     float: left;
     width: 60px;
@@ -38,38 +49,32 @@
     line-height: 56px;
     font-size: 28px;
     border-radius: 100%;
-    margin-left: 20px;
-}
-
-.win {
-    display: block;
-    float: left;
-    position: relative;
-    color: black;
-
-}
+    margin: 10px;
+}feat
 
 .win p {
     float: left;
-    position: relative;
-    display: block;
-    line-height: 56px;
-    text-align: center;
 }
 
-.plus_sign {
+.plus_sign p {
+    float: left;
+    background-color: white;
     color: gray;
 }
 
-.bonus:before {
-    width: 20px; height: 4px; margin: -2px 0 0 -10px;
+.bonus p {
+    float: left;
 }
 
-.bonus:after {
-    content: ""; position: absolute;
-    left: -30px; top: 50%; background:#999;
-    width: 4px; height: 20px; margin: -10px 0 0 2px;
-}
+/*.bonus:before {*/
+/*    width: 20px; height: 4px; margin: -2px 0 0 -10px;*/
+/*}*/
+
+/*.bonus:after {*/
+/*    content: ""; position: absolute;*/
+/*    left: -30px; top: 50%; background:#999;*/
+/*    width: 4px; height: 20px; margin: -10px 0 0 2px;*/
+/*}*/
 
 .ball_645 .ball1 {
     background: #fbc400;
@@ -92,25 +97,32 @@
 }
 
 .tbl_data {
-    border-top: 1px solid #333;
     table-layout: fixed;
     width: 100%;
     border-spacing: 0;
-    border-collapse: separate;
+    border-collapse: collapse;
     margin: 0;
     padding: 0;
     display: table;
     box-sizing: border-box;
     text-indent: initial;
-    border-color: gray;
+
 }
 
 .table_thead tr th {
     padding: 13px 9px 15px;
+    color: skyblue;
+    background: #fff;
+    border: 1px solid gray;
 }
 
 .table_body tr td {
     padding: 13px 9px 15px;
+    color: white;
+    word-wrap: break-word;
+    word-break: keep-all;
+    background: #555;
+    border: 1px solid gray;
 }
 
 .td_center {
