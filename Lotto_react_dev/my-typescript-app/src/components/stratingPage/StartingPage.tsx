@@ -5,7 +5,20 @@ const StartingPage = () => {
     return (
         <div className={classes.content_wrap}>
             <div className={'search_data'}>
-                회차 바로가기 <button> 조회 </button>
+                회차 바로가기
+                <select>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                </select>
+                <button> 조회 </button>
             </div>
             <div className={classes.win_results}>
                 <h4><strong>1081회</strong> 당첨 결과 </h4>
