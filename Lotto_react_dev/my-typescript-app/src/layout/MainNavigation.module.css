@@ -1,14 +1,14 @@
 /* Header CSS */
 
 .header {
-    width: 100%;
+    width: 1000px;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     padding: 10px 0;
 }
 
 .logo {
-    margin-left: 15%;
     text-decoration: none;
     display: inline-block;
 }
@@ -19,21 +19,27 @@
 
 .nav {
     margin-left: auto; /* 변경된 부분: 우측으로 정렬 */
-    margin-right: 15%;
     display: flex;
     align-items: center;
 }
 
 .nav ul {
+    display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex;
     align-items: center;
+    justify-content: flex-end;
 }
 
 .nav li {
-    margin-right: 50px;
+    line-height: 50px;
+    margin: 0 15px;
+}
+
+.signUp {
+    border-radius: 30px;
+    border: 1px solid white;
 }
 
 .nav a {

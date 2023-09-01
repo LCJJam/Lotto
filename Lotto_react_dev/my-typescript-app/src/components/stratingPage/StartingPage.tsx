@@ -1,24 +1,131 @@
-import React from "react";
+import React , { useState , useEffect } from "react";
 import classes from './StartingPage.module.css'
+import { GET } from "@store/fetch-get-action"
+import Select from 'react-select'
 const StartingPage = () => {
     const ballColor = (ball : string) => `${classes.ball_645} + ${ball}`;
+
+    const [maxRound , setMaxRound] = useState<number>(0);
+    const [curRound , setCurRound] = useState<number>(1);
+
+    const [selectedOptions, setSelectedOptions] = useState({value: 1, label: 1});
+
+    const [games, setGames] = useState({
+        round: 1,
+        ballNum1: 1,
+        ballNum2: 2,
+        ballNum3: 3,
+        ballNum4: 4,
+        ballNum5: 5,
+        ballNum6: 6,
+        bonusNum: 7,
+
+        firstAccumamnt: 0,
+
+        secondAccumamnt: 0,
+
+    });
+
+    /* eslint-disable */
+    useEffect(() => {
+        GET("/game/round").then(
+            res => {
+                setMaxRound(res.data);
+            }
+        );
+    },[]);
+
+    useEffect(() => {
+        GET("/game/round/"+curRound).then(
+            res => {
+                // setCurRound(res.data);
+                let a = selectedOptions.value;
+                setBall(a);
+            }
+        );
+
+    },[selectedOptions]);
+
+    const setBall = (curRounds : number) => {
+        GET("/game/round/"+curRounds).then(
+            res => {
+                console.log(res.data);
+                setGames(res.data);
+                console.log(games)
+            }
+        );
+    };
+
+    const handleChange = (selectedOption : any) => {
+        setSelectedOptions(selectedOption);
+        setCurRound(selectedOption.value);
+        console.log(`Option selected:`, selectedOption);
+        console.log(curRound);
+    };
+    const selectOption = (maxRound : number) =>{
+        const options = [];
+        for(let i = maxRound ; i >= 1 ; i--) {
+            options.push({value: i, label: i});
+        }
+        return options;
+    };
+
+    const drawBall = () => {
+        games.ballNum1;
+        for(let i = 1 ; i <= 6 ; i++) {
+            <span className={ballColor(`classes.ball${i}`)}>{`games.ballNum${i}`}</span>
+        }
+
+    }
+
+    const ballColors = (ball : number) => {
+        let idx = Math.floor(ball / 10) + 1;
+        console.log(idx);
+        switch (idx) {
+            case 1:
+                return ballColor(classes.ball1);
+            case 2:
+                return ballColor(classes.ball2);
+            case 3:
+                return ballColor(classes.ball3);
+            case 4:
+                return ballColor(classes.ball4);
+            case 5:
+                return ballColor(classes.ball5);
+        }
+    }
+
+    const formatNumberWithCommas = (num : number) => {
+        // 숫자를 문자열로 변환
+        const numberString = num.toString();
+
+        // 문자열을 3자리씩 끊어 배열로 만듭니다.
+        const parts = [];
+        for (let i = numberString.length; i > 0; i -= 3) {
+            const start = Math.max(0, i - 3);
+            const part = numberString.substring(start, i);
+            parts.unshift(part);
+        }
+
+        // 배열을 쉼표로 합쳐서 결과 문자열을 생성
+        const formattedNumber = parts.join(',');
+        return formattedNumber;
+    }
+
     return (
         <div className={classes.content_wrap}>
-            <div className={'search_data'}>
-                회차 바로가기
-                <select>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                </select>
-                <button> 조회 </button>
+            <div className={classes.search_data}>
+                <div>
+                    <span> 회차 바로가기 </span>
+                    <Select className={classes.roundSelect}
+                            options={selectOption(maxRound)}
+                            value={selectedOptions}
+                            maxMenuHeight={200}
+                            isSearchable={true}
+                            onChange={handleChange}
+                            defaultValue={{value: curRound,label: curRound}}
+                    />
+                </div>
             </div>
             <div className={classes.win_results}>
                 <h4><strong>1081회</strong> 당첨 결과 </h4>
@@ -26,11 +133,12 @@ const StartingPage = () => {
                     <div className={classes.ball_645}>
                         <div className={classes.win}>
                             <p>
-                                <span className={ballColor(classes.ball1)}>1</span>
-                                <span className={ballColor(classes.ball2)}>11</span>
-                                <span className={ballColor(classes.ball3)}>21</span>
-                                <span className={ballColor(classes.ball4)}>31</span>
-                                <span className={ballColor(classes.ball5)}>41</span>
+                                <span className={ballColors(games.ballNum1)}>{games.ballNum1}</span>
+                                <span className={ballColors(games.ballNum2)}>{games.ballNum2}</span>
+                                <span className={ballColors(games.ballNum3)}>{games.ballNum3}</span>
+                                <span className={ballColors(games.ballNum4)}>{games.ballNum4}</span>
+                                <span className={ballColors(games.ballNum5)}>{games.ballNum5}</span>
+                                <span className={ballColors(games.ballNum6)}>{games.ballNum6}</span>
                             </p>
                         </div>
                         <div className={classes.plus_sign}>
@@ -40,7 +148,7 @@ const StartingPage = () => {
                         </div>
                         <div className={classes.bonus}>
                             <p>
-                                <span className={ballColor(classes.ball4)}>32</span>
+                                <span className={ballColors(games.bonusNum)}>{games.bonusNum}</span>
                             </p>
                         </div>
                     </div>
@@ -64,7 +172,7 @@ const StartingPage = () => {
                             1등
                         </td>
                         <td className={classes.td_right}>
-                            25,000,000,000 원
+                            {formatNumberWithCommas(games.firstAccumamnt)} 원
                         </td>
                         <td className={classes.td_center}>
                             10
@@ -84,7 +192,7 @@ const StartingPage = () => {
                             2등
                         </td>
                         <td className={classes.td_right}>
-                            25,000,000,000 원
+                            {formatNumberWithCommas(games.secondAccumamnt)} 원
                         </td>
                         <td className={classes.td_center}>
                             10

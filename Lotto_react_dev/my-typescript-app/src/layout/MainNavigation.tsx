@@ -42,8 +42,7 @@ const MainNavigation = () => {
       <nav className={classes.nav}>
         <ul>
           <li>{!isLogin && <Link to="/login">Login</Link>}</li>
-          <li>{!isLogin && <Link to="/signup">SignUp</Link>}</li>
-          <li>{!isLogin && <Link to="/findPwd">Find-Pwd</Link>}</li>
+          <li className={classes.signUp}>{!isLogin && <Link to="/signup">&nbsp;SignUp&nbsp;</Link>}</li>
           <li>{isLogin && <Link to="/profile">{nickname}</Link>}</li>
           <li>
             {isLogin && <button onClick={toggleLogoutHandler}>Logout</button>}

@@ -6,10 +6,35 @@
     /*width: 70%;*/
 }
 
+.search_data {
+    margin-bottom: 10px;
+    height: 40px;
+    text-align: right;
+    background-color: #ffffff80;
+}
+
+.search_form span {
+    margin-right: 10px;
+}
+
+.roundSelect {
+    display: inline-block;
+    border: 1px solid gray;
+    border-radius: 3px;
+    width: 150px;
+    text-align: center;
+}
+
+.search_form button {
+    margin: 10px 10px;
+    color: white;
+    background-color: #337ab7;
+}
+
 .win_results {
     display: block;
     border-top: 1px solid #ddd;
-    background-color: #fff;
+    background-color: #ffffff80;
     text-align: center;
     margin-bottom: 40px;
     padding: 60px 60px 90px;
@@ -30,7 +55,7 @@
     width: 100%;
     font-weight: 700;
     font-size: 28px;
-    color: #fff;
+    color: #ffffff;
 }
 
 .ball_645 p {
@@ -46,7 +71,7 @@
     float: left;
     width: 60px;
     height: 60px;
-    line-height: 56px;
+    line-height: 60px;
     font-size: 28px;
     border-radius: 100%;
     margin: 10px;
@@ -58,8 +83,8 @@
 
 .plus_sign p {
     float: left;
-    background-color: white;
-    color: gray;
+    color: black;
+    background-color: #ffffff00;
 }
 
 .bonus p {
@@ -112,7 +137,7 @@
 .table_thead tr th {
     padding: 13px 9px 15px;
     color: skyblue;
-    background: #fff;
+    background: #ffffffcf;
     border: 1px solid gray;
 }
 
@@ -121,7 +146,7 @@
     color: white;
     word-wrap: break-word;
     word-break: keep-all;
-    background: #555;
+    background: #555555cf;
     border: 1px solid gray;
 }
 

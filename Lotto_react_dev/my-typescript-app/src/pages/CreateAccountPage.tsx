@@ -1,8 +1,6 @@
 import React from 'react';
-import StartingPage from '../components/stratingPage/StartingPage';
-
 const CreateAccountPage = () => {
-    return <StartingPage />;
+    return <div>Create Account</div>;
 };
 
 export default CreateAccountPage;
