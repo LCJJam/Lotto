@@ -5,7 +5,7 @@ import Select from 'react-select'
 const StartingPage = () => {
     const ballColor = (ball : string) => `${classes.ball_645} + ${ball}`;
 
-    const [maxRound , setMaxRound] = useState<number>(0);
+    const [maxRound , setMaxRound] = useState<number>(1);
     const [curRound , setCurRound] = useState<number>(1);
 
     const [selectedOptions, setSelectedOptions] = useState({value: 1, label: 1});
@@ -20,9 +20,21 @@ const StartingPage = () => {
         ballNum6: 6,
         bonusNum: 7,
 
-        firstAccumamnt: 0,
+        drwNoDate: '',
 
+        firstAccumamnt: 0,
         secondAccumamnt: 0,
+        thirdAccumamnt: 0,
+        fourthAccumamnt: 0,
+        fifthAccumamnt: 0,
+
+        firstPrzwnerCo: 0,
+        secondPrzwnerCo: 0,
+        thirdPrzwnerCo: 0,
+        fourthPrzwnerCo: 0,
+        fifthPrzwnerCo: 0,
+
+        etc: '',
 
     });
 
@@ -30,7 +42,9 @@ const StartingPage = () => {
     useEffect(() => {
         GET("/game/round").then(
             res => {
-                setMaxRound(res.data);
+                const maxNum : number = res.data;
+                setMaxRound(maxNum);
+                setSelectedOptions({value: maxNum,label: maxNum});
             }
         );
     },[]);
@@ -49,9 +63,7 @@ const StartingPage = () => {
     const setBall = (curRounds : number) => {
         GET("/game/round/"+curRounds).then(
             res => {
-                console.log(res.data);
                 setGames(res.data);
-                console.log(games)
             }
         );
     };
@@ -60,7 +72,6 @@ const StartingPage = () => {
         setSelectedOptions(selectedOption);
         setCurRound(selectedOption.value);
         console.log(`Option selected:`, selectedOption);
-        console.log(curRound);
     };
     const selectOption = (maxRound : number) =>{
         const options = [];
@@ -70,17 +81,8 @@ const StartingPage = () => {
         return options;
     };
 
-    const drawBall = () => {
-        games.ballNum1;
-        for(let i = 1 ; i <= 6 ; i++) {
-            <span className={ballColor(`classes.ball${i}`)}>{`games.ballNum${i}`}</span>
-        }
-
-    }
-
     const ballColors = (ball : number) => {
         let idx = Math.floor(ball / 10) + 1;
-        console.log(idx);
         switch (idx) {
             case 1:
                 return ballColor(classes.ball1);
@@ -123,12 +125,13 @@ const StartingPage = () => {
                             maxMenuHeight={200}
                             isSearchable={true}
                             onChange={handleChange}
-                            defaultValue={{value: curRound,label: curRound}}
+
                     />
                 </div>
             </div>
             <div className={classes.win_results}>
-                <h4><strong>1081회</strong> 당첨 결과 </h4>
+                <h4><strong>{games.round}회</strong> 당첨 결과 </h4>
+                <div>({games.drwNoDate})</div>
                 <div className={classes.nums}>
                     <div className={classes.ball_645}>
                         <div className={classes.win}>
@@ -152,6 +155,11 @@ const StartingPage = () => {
                             </p>
                         </div>
                     </div>
+                    <div className={classes.ball_label}>
+                        <div className={classes.ball_label_win}> 당첨 번호 </div>
+                        <div className={classes.ball_label_bonus}></div>
+                        <div className={classes.ball_label_bonus}> 보너스 번호 </div>
+                    </div>
                 </div>
             </div>
             <table className={classes.tbl_data}>
@@ -172,19 +180,20 @@ const StartingPage = () => {
                             1등
                         </td>
                         <td className={classes.td_right}>
-                            {formatNumberWithCommas(games.firstAccumamnt)} 원
+                            {formatNumberWithCommas(games.firstAccumamnt*games.firstPrzwnerCo)} 원
                         </td>
                         <td className={classes.td_center}>
-                            10
+                            {formatNumberWithCommas(games.firstPrzwnerCo)}
                         </td>
                         <td className={classes.td_right}>
-                            2,500,000,000 원
+                            {formatNumberWithCommas(games.firstAccumamnt)} 원
                         </td>
                         <td className={classes.td_center}>
                             당첨번호 <strong>6개</strong> 숫자 일치
                         </td>
                         <td className={classes.td_center} rowSpan={5}>
-                            1등 <br/> 자동9 <br/> 수동2
+                            {/*1등 <br/> 자동9 <br/> 수동2*/}
+                            {games.etc}
                         </td>
                     </tr>
                     <tr>
@@ -192,13 +201,13 @@ const StartingPage = () => {
                             2등
                         </td>
                         <td className={classes.td_right}>
-                            {formatNumberWithCommas(games.secondAccumamnt)} 원
+                            {formatNumberWithCommas(games.secondAccumamnt*games.secondPrzwnerCo)} 원
                         </td>
                         <td className={classes.td_center}>
-                            10
+                            {formatNumberWithCommas(games.secondPrzwnerCo)}
                         </td>
                         <td className={classes.td_right}>
-                            2,500,000,000 원
+                            {formatNumberWithCommas(games.secondAccumamnt)} 원
                         </td>
                         <td className={classes.td_center}>
                             당첨번호 <strong>5개</strong> 숫자 일치 <br/>
@@ -210,13 +219,13 @@ const StartingPage = () => {
                             3등
                         </td>
                         <td className={classes.td_right}>
-                            25,000,000,000 원
+                            {formatNumberWithCommas(games.thirdAccumamnt*games.thirdPrzwnerCo)} 원
                         </td>
                         <td className={classes.td_center}>
-                            10
+                            {formatNumberWithCommas(games.thirdPrzwnerCo)}
                         </td>
                         <td className={classes.td_right}>
-                            2,500,000,000 원
+                            {formatNumberWithCommas(games.thirdAccumamnt)} 원
                         </td>
                         <td className={classes.td_center}>
                             당첨번호 <strong>5개</strong> 숫자 일치
@@ -227,13 +236,13 @@ const StartingPage = () => {
                             4등
                         </td>
                         <td className={classes.td_right}>
-                            25,000,000,000 원
+                            {formatNumberWithCommas(games.fourthAccumamnt*games.fourthPrzwnerCo)} 원
                         </td>
                         <td className={classes.td_center}>
-                            10
+                            {formatNumberWithCommas(games.fourthPrzwnerCo)}
                         </td>
                         <td className={classes.td_right}>
-                            2,500,000,000 원
+                            {formatNumberWithCommas(games.fourthAccumamnt)} 원
                         </td>
                         <td className={classes.td_center}>
                             당첨번호 <strong>4개</strong> 숫자 일치
@@ -244,13 +253,13 @@ const StartingPage = () => {
                             5등
                         </td>
                         <td className={classes.td_right}>
-                            25,000,000,000 원
+                            {formatNumberWithCommas(games.fifthAccumamnt*games.fifthPrzwnerCo)} 원
                         </td>
                         <td className={classes.td_center}>
-                            10
+                            {formatNumberWithCommas(games.fifthPrzwnerCo)}
                         </td>
                         <td className={classes.td_right}>
-                            2,500,000,000 원
+                            {formatNumberWithCommas(games.fifthAccumamnt)} 원
                         </td>
                         <td className={classes.td_center}>
                             당첨번호 <strong>3개</strong> 숫자 일치
