@@ -32,6 +32,7 @@ const MainNavigation = () => {
 
   const toggleLogoutHandler = () => {
     authCtx.logout();
+    alert('로그 아웃 되었습니다');
   };
 
   return (
