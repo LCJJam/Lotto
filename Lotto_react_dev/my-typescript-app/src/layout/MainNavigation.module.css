@@ -1,20 +1,39 @@
 /* Header CSS */
 
 .header {
-    width: 1000px;
-    margin: 0 auto;
     display: flex;
-    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    box-sizing: border-box;
     padding: 10px 0;
+}
+
+/* 반응형 스타일 설정 */
+@media (max-width: 800px) {
+    .header {
+        width: 100%; /* 500px 이하에서는 100%로 설정 */
+        max-width: 800px; /* 최대 너비 500px로 제한 */
+    }
 }
 
 .logo {
     text-decoration: none;
-    display: inline-block;
+    display: flex;
 }
 
 .logo img {
-    width: 80px;
+    width: 120px;
+}
+
+.game {
+    margin-left: auto;
+    align-items: center;
+    display: flex;
+    color: #ffffff;
+}
+
+.game img {
+    width: 200px;
 }
 
 .nav {

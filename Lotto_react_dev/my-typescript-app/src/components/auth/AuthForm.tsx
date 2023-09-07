@@ -21,6 +21,7 @@ const AuthForm = () => {
     setIsLoading(true);
     authCtx.login(enteredEmail, enteredPassword);
     setIsLoading(false);
+    console.log(authCtx);
 
     if (authCtx.isSuccess) {
       navigate('/', { replace: true });

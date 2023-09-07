@@ -1,0 +1,204 @@
+.content_wrap {
+    display: block;
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 80%;
+    /*width: 70%;*/
+}
+
+/* 반응형 스타일 설정 */
+@media (max-width: 800px) {
+    .content_wrap {
+        width: 100%; /* 500px 이하에서는 100%로 설정 */
+        max-width: 800px; /* 최대 너비 500px로 제한 */
+    }
+}
+
+.search_data {
+    margin-bottom: 10px;
+    height: 40px;
+    text-align: right;
+    background-color: #ffffff80;
+}
+
+.search_form span {
+    margin-right: 10px;
+}
+
+.roundSelect {
+    display: inline-block;
+    border: 1px solid gray;
+    border-radius: 3px;
+    width: 150px;
+    text-align: center;
+}
+
+.search_form button {
+    margin: 10px 10px;
+    color: white;
+    background-color: #337ab7;
+}
+
+.win_results {
+    display: block;
+    border-top: 1px solid #ddd;
+    background-color: #ffffff80;
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px 0;
+    box-sizing: border-box;
+}
+
+.win_results {
+    display: flex;
+    justify-content: center;
+}
+
+.recommendButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.recommendButton button{
+    margin: 10px 10px;
+    color: white;
+    background-color: #337ab7;
+}
+
+.nums {
+    display: block;
+    box-sizing: border-box;
+    margin-top: 26px;
+}
+
+.ball_645 {
+    width: 100%;
+    font-weight: 700;
+    font-size: 28px;
+    color: #ffffff;
+    justify-content: center;
+    display: flex;
+}
+
+.ball_645 p {
+    padding: 30px;
+    margin: 0;
+    border-radius: 30px;
+    font-weight: 300;
+    line-height: 22px;
+    background-color: #eadada;
+}
+
+.ball_645 p span {
+    float: left;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 28px;
+    border-radius: 100%;
+    background-color: #eadada;
+    margin: 10px;
+}
+
+.win p {
+    float: left;
+    color: #e96353;
+}
+
+.ball_label {
+    display: flex;
+    font-weight: bold;
+    margin: 10px auto;
+    width: 100%;
+    justify-content: center;
+}
+
+@media (min-width: 500px) {
+    .ball_label {
+        width: 100%; /* 500px 이하에서는 100%로 설정 */
+        max-width: 800px; /* 최대 너비 500px로 제한 */
+    }
+}
+
+.ball_label_win {
+    width: 70%;
+}
+
+.ball_645 .ball1 {
+    background: #fbc400;
+}
+
+.ball_645 .ball2 {
+    background: #69c8f2;
+}
+
+.ball_645 .ball3 {
+    background: #e96353;
+}
+
+.ball_645 .ball4 {
+    background: #8f8f8f;
+}
+
+.ball_645 .ball5 {
+    background: #5ab545;
+}
+
+.tbl_data {
+    table-layout: fixed;
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    display: table;
+    box-sizing: border-box;
+    text-indent: initial;
+
+}
+
+.table_thead tr th {
+    padding: 13px 9px 15px;
+    color: skyblue;
+    background: #ffffffcf;
+    border: 1px solid gray;
+}
+
+.table_body tr td {
+    padding: 13px 9px 15px;
+    color: white;
+    word-wrap: break-word;
+    word-break: keep-all;
+    background: #555555cf;
+    border: 1px solid gray;
+}
+
+.td_center {
+    text-align: center;
+}
+
+.td_right {
+    text-align: right;
+}
+
+.col1 {
+    width: 85px;
+}
+
+.col2 {
+    width: 180px;
+}
+
+.col3 {
+    width: 145px;
+}
+
+.col4 {
+    width: 180px;
+}
+
+.col5 {
+    width: 110px;
+}
+

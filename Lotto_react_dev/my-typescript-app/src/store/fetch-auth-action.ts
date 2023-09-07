@@ -31,7 +31,7 @@ const fetchAuth = async (fetchData: FetchData) => {
     }
 
     if (!response) {
-      alert('false!');
+      alert('로그인에 실패하였습니다!');
       return null;
     }
 
@@ -41,7 +41,7 @@ const fetchAuth = async (fetchData: FetchData) => {
       const serverError = err as AxiosError<ServerError>;
       if (serverError && serverError.response) {
         console.log(serverError.response.data);
-        alert('failed!');
+        alert('로그인에 실패하였습니다!');
         return null;
       }
     }

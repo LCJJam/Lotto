@@ -14,7 +14,7 @@ const ChangeUsername = () => {
     event.preventDefault();
     const enteredNickname = nicknameInputRef.current!.value;
     console.log('change nickname start!');
-    authCtx.changeNickname(enteredNickname);
+    authCtx.changeNickname(authCtx.userObj.email, enteredNickname);
     if (authCtx.isSuccess) {
       alert('변경 되었습니다.');
       authCtx.getUser();

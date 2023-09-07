@@ -26,8 +26,8 @@ const AuthContext = React.createContext({
   login: (email: string, password: string) => {},
   logout: () => {},
   getUser: () => {},
-  changeNickname: (nickname: string) => {},
-  changePassword: (exPassword: string, newPassword: string) => {},
+  changeNickname: (email: string, nickname: string) => {},
+  changePassword: (email: string, exPassword: string, newPassword: string) => {},
 });
 
 export const AuthContextProvider: React.FC<Props> = (props) => {
@@ -81,8 +81,11 @@ export const AuthContextProvider: React.FC<Props> = (props) => {
     });
   };
 
+  /* eslint-disable */
   const logoutHandler = useCallback(() => {
     setToken('');
+    setUserObj({ email: '', nickname: '' });
+    setIsSuccess(false);
     authAction.logoutActionHandler();
     if (logoutTimer) {
       clearTimeout(logoutTimer);
@@ -102,10 +105,10 @@ export const AuthContextProvider: React.FC<Props> = (props) => {
     });
   };
 
-  const changeNicknameHandler = (nickname: string) => {
+  const changeNicknameHandler = (email: string, nickname: string) => {
     setIsSuccess(false);
 
-    const data = authAction.changeNicknameActionHandler(nickname, token);
+    const data = authAction.changeNicknameActionHandler(email, nickname, token);
     data.then((result) => {
       if (result !== null) {
         const userData: UserInfo = result.data;
@@ -115,9 +118,10 @@ export const AuthContextProvider: React.FC<Props> = (props) => {
     });
   };
 
-  const changePaswordHandler = (exPassword: string, newPassword: string) => {
+  const changePaswordHandler = (email: string, exPassword: string, newPassword: string) => {
     setIsSuccess(false);
     const data = authAction.changePasswordActionHandler(
+      email,
       exPassword,
       newPassword,
       token,

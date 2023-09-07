@@ -21,7 +21,7 @@ const ChangePassword = () => {
       return;
     }
     console.log('change pw start!');
-    authCtx.changePassword(enteredExPassword, enteredNewPassword);
+    authCtx.changePassword(authCtx.userObj.email, enteredExPassword, enteredNewPassword);
     console.log(authCtx.isSuccess);
     if (authCtx.isSuccess) {
       alert('다시 로그인 하세요.');
@@ -37,21 +37,21 @@ const ChangePassword = () => {
         <input
           type="password"
           id="ex-password"
-          minLength={8}
+          minLength={2}
           ref={exPasswordInputRef}
         />
         <label htmlFor="new-password">New Password</label>
         <input
           type="password"
           id="new-password"
-          minLength={8}
+          minLength={2}
           ref={newPasswordInputRef}
         />
         <label htmlFor="new-password">New Password Again</label>
         <input
           type="password"
           id="new-password"
-          minLength={8}
+          minLength={2}
           ref={newPasswordAgainInputRef}
         />
       </div>

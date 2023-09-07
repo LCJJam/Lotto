@@ -1,6 +1,7 @@
 import React from 'react';
+import CreateAccountForm from '../components/auth/CreateAccountForm';
 const CreateAccountPage = () => {
-    return <div>Create Account</div>;
+    return <CreateAccountForm/>;
 };
 
 export default CreateAccountPage;

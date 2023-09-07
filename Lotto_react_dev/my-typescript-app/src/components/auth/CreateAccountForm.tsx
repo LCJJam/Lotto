@@ -3,6 +3,7 @@ import { useRef, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../store/auth-context';
 import classes from './CreateAccountForm.module.css';
+import axios from "axios";
 
 const CreateAccountForm = () => {
   let navigate = useNavigate();
@@ -10,19 +11,35 @@ const CreateAccountForm = () => {
   const emailInputRef = useRef<HTMLInputElement>(null);
   const passwordInputRef = useRef<HTMLInputElement>(null);
   const nicknameInputRef = useRef<HTMLInputElement>(null);
-
-  const submitHandler = (event: React.FormEvent) => {
+  const submitHandler = async (event: React.FormEvent) => {
     event.preventDefault();
 
     const enteredEmail = emailInputRef.current!.value;
     const enteredPassword = passwordInputRef.current!.value;
     const enteredNickname = nicknameInputRef.current!.value;
 
-    authCtx.signup(enteredEmail, enteredPassword, enteredNickname);
+    // authCtx.signup(enteredEmail, enteredPassword, enteredNickname);
 
-    if (authCtx.isSuccess) {
-      return navigate('/', { replace: true });
+    try {
+      const response = await axios.post('/auth/signup',
+          { email: enteredEmail,
+            password: enteredPassword,
+            nickname: enteredNickname,
+          } ,
+          { headers: {contentType: 'application/json',},
+          });
+
+      if (response.status === 200) {
+        const responseData = response.data;
+        alert('환영합니다. ' + responseData.nickname + ' 님!\n다시 로그인해주세요.') ;
+        return navigate('/', { replace: true });
+      }
+    } catch (e) {
+      alert('이미 있는 아이디 입니다.');
     }
+
+
+
   };
 
   return (

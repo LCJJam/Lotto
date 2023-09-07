@@ -5,6 +5,7 @@ import Layout from "@layout/Layout";
 import AuthPage from "@pages/AuthPage";
 import HomePage from "@pages/HomePage";
 import ProfilePage from "@pages/ProfilePage";
+import GamePage from "@pages/GamePage";
 import CreateAccountPage from '@pages/CreateAccountPage';
 import AuthContext from "@store/auth-context";
 
@@ -15,22 +16,6 @@ function App() {
     <Layout>
       <Routes>
         <Route path="/" element={<HomePage />} />
-
-        {/*<Route path="/page/:pageId" element={<ArticleListPage />} />*/}
-        {/*<Route*/}
-        {/*  path="/create"*/}
-        {/*  element={*/}
-        {/*    authCtx.isLoggedIn ? <CreateArticlePage /> : <Navigate to="/" />*/}
-        {/*  }*/}
-        {/*/>*/}
-        {/*<Route*/}
-        {/*  path="/update/:articleId"*/}
-        {/*  element={*/}
-        {/*    authCtx.isLoggedIn ? <UpdateArticlePage /> : <Navigate to="/" />*/}
-        {/*  }*/}
-        {/*/>*/}
-        {/*<Route path="/article/:articleId" element={<ArticleOnePage />} />*/}
-
         <Route
           path="/signup/"
           element={
@@ -41,6 +26,7 @@ function App() {
           path="/login/*"
           element={authCtx.isLoggedIn ? <Navigate to="/" /> : <AuthPage />}
         />
+        <Route path="/game/" element={<GamePage />} />
         <Route
           path="/profile/"
           element={!authCtx.isLoggedIn ? <Navigate to="/" /> : <ProfilePage />}
