@@ -44,7 +44,8 @@ public class WebSecurityConfig {
 
                 .and()
                 .headers()
-                .frameOptions().sameOrigin()
+                .frameOptions().disable()
+//                .sameOrigin()
 
                 .and()
                 .exceptionHandling()
@@ -55,6 +56,7 @@ public class WebSecurityConfig {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET,"/game/**").permitAll()
                 .antMatchers("/auth/**").permitAll()
+                .antMatchers("/member/**").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
                 .anyRequest().authenticated()
 

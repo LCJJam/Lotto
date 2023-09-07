@@ -53,13 +53,13 @@ public class GameResponseDto {
                 .firstAccumamnt(game.getFirstAccumamnt())
                 .firstPrzwnerCo(game.getFirstPrzwnerCo())
                 .secondAccumamnt(game.getSecondAccumamnt())
-                .secondPrzwnerCo(game.getSecondAccumamnt())
+                .secondPrzwnerCo(game.getSecondPrzwnerCo())
                 .thirdAccumamnt(game.getThirdAccumamnt())
-                .thirdPrzwnerCo(game.getThirdAccumamnt())
+                .thirdPrzwnerCo(game.getThirdPrzwnerCo())
                 .fourthAccumamnt(game.getFourthAccumamnt())
-                .fourthPrzwnerCo(game.getFourthAccumamnt())
+                .fourthPrzwnerCo(game.getFourthPrzwnerCo())
                 .fifthAccumamnt(game.getFifthAccumamnt())
-                .fifthPrzwnerCo(game.getFifthAccumamnt())
+                .fifthPrzwnerCo(game.getFifthPrzwnerCo())
                 .etc(game.getEtc())
                 .build();
     }
