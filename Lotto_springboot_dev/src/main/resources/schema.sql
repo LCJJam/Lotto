@@ -69,4 +69,30 @@ VALUES
     (9, 16, 20, 28, 36, 44, 7, '2023', '2023-07-13', 2200000000, 10, 11000000, 70, 700000, 140, 50000, 1100, 5000, 220, 'Sample Data 20'),
     (3,  9, 15, 21, 27, 33, 6, '2023', '2023-07-10', 1800000000, 7 , 9000000 , 60, 600000, 120, 50000, 700 , 5000, 180, 'Sample Data 21');
 
-commit
+commit;
+
+CREATE TABLE game (
+                      round INT AUTO_INCREMENT PRIMARY KEY,
+                      ball_num1 INT NOT NULL,
+                      ball_num2 INT NOT NULL,
+                      ball_num3 INT NOT NULL,
+                      ball_num4 INT NOT NULL,
+                      ball_num5 INT NOT NULL,
+                      ball_num6 INT NOT NULL,
+                      bonus_num INT NOT NULL,
+                      yyyy VARCHAR(4),
+                      drw_no_date VARCHAR(10),
+                      first_accumamnt LONG,
+                      first_przwner_co INT,
+                      second_accumamnt INT,
+                      second_przwner_co INT,
+                      third_accumamnt INT,
+                      third_przwner_co INT,
+                      fourth_accumamnt INT,
+                      fourth_przwner_co INT,
+                      fifth_accumamnt INT,
+                      fifth_przwner_co INT,
+                      etc VARCHAR(50)
+);
+
+commit;
