@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classes from './MainNavigation.module.css';
 import AuthContext from '@store/auth-context';
-import Logo from '@images/lotto_icon.png';
+import Logo from '@images/lotto_ic.png';
 import Game from '@images/game.gif';
 
 const MainNavigation = () => {

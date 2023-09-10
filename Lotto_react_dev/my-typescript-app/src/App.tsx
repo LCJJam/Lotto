@@ -6,6 +6,7 @@ import AuthPage from "@pages/AuthPage";
 import HomePage from "@pages/HomePage";
 import ProfilePage from "@pages/ProfilePage";
 import GamePage from "@pages/GamePage";
+import MyGamePage from "@pages/MyGamePage";
 import CreateAccountPage from '@pages/CreateAccountPage';
 import AuthContext from "@store/auth-context";
 
@@ -27,6 +28,7 @@ function App() {
           element={authCtx.isLoggedIn ? <Navigate to="/" /> : <AuthPage />}
         />
         <Route path="/game/" element={<GamePage />} />
+        <Route path="/mypage/" element={<MyGamePage />} />
         <Route
           path="/profile/"
           element={!authCtx.isLoggedIn ? <Navigate to="/" /> : <ProfilePage />}

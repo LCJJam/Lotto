@@ -81,15 +81,14 @@
     display: flex;
 }
 
+
 .ball_645 p {
-    padding: 30px;
-    margin: 0;
+    margin: 3px;
     border-radius: 30px;
+    background-color: #eadada;
     font-weight: 300;
     line-height: 22px;
-    background-color: #eadada;
 }
-
 .ball_645 p span {
     float: left;
     width: 60px;

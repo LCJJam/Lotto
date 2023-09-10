@@ -1,11 +1,16 @@
 import React, {useContext, useState} from 'react';
 import classes from "./GamePage.module.css";
 import AuthContext from "@store/auth-context";
+import { useNavigate } from "react-router-dom"
+import axios from "axios";
+import { POST } from '@store/fetch-post-action';
 
 
 const GamePage = () => {
 
     const authCtx = useContext(AuthContext);
+
+    let navigate = useNavigate();
 
     const ballColor = (ball : string) => `${classes.ball_645} + ${ball}`;
 
@@ -26,6 +31,8 @@ const GamePage = () => {
     }
 
     const [count, setCount] = useState(0);
+    const [isRecommended , setIsRecommended] = useState(false);
+    const [viewForm , setViewForm] = useState([['']]);
 
     const recommendedNumber = () => {
         const randomArray = [];
@@ -46,18 +53,56 @@ const GamePage = () => {
     }
 
     const reRecommendView = ()  => {
-        return recommendedNumber().map((row, rowIndex) =>
-            <div key={rowIndex}>
-                <span> {rowIndex + 1} : </span>
-                {row.map((item: number, index) =>
-                    <span key={index} className={ballColors({item}.item)}>{item}</span>
-                )}
-            </div>
-        );
+        if(isRecommended) {
+            return viewForm.map((item : any) =>
+                <div key={item}>
+                    <p>
+                        <span> {item.gameNum} : </span>
+                            <span className={ballColors(item.ballNum1)}>{item.ballNum1}</span>
+                            <span className={ballColors(item.ballNum2)}>{item.ballNum2}</span>
+                            <span className={ballColors(item.ballNum3)}>{item.ballNum3}</span>
+                            <span className={ballColors(item.ballNum4)}>{item.ballNum4}</span>
+                            <span className={ballColors(item.ballNum5)}>{item.ballNum5}</span>
+                            <span className={ballColors(item.ballNum6)}>{item.ballNum6}</span>
+
+                    </p>
+                </div>
+            );
+        } else {
+            return recommendedNumber().map((row, rowIndex) =>
+                <div key={rowIndex}>
+                    <p>
+                        <span> {rowIndex + 1} : </span>
+                        {row.map((item: number, index) =>
+                            <span key={index} className={ballColors({item}.item)}>{item}</span>
+                        )}
+                    </p>
+                </div>
+            );
+        }
+
     }
 
     const recommendedNumberClick = () => {
-        setCount(count + 1);
+        setCount(count+1);
+    }
+
+    const detailRecommendedNumberClick = () => {
+        if(authCtx.isLoggedIn) {
+            POST("/mygame/recommended", authCtx.userObj.email).then(
+                res => {
+                    if(!res.data) {
+                        alert("이미 추천 받았습니다!");
+                    } else {
+                        alert("번호가 추천 되었습니다.")
+                        setViewForm(res.data);
+                        setIsRecommended(true);
+                    }
+                }
+            );
+        } else {
+            navigate('/login', { replace: true });
+        }
     }
 
 
@@ -68,9 +113,7 @@ const GamePage = () => {
                 <div className={classes.nums}>
                     <div className={classes.ball_645}>
                         <div className={classes.win}>
-                            <p>
-                                {reRecommendView()}
-                            </p>
+                            {reRecommendView()}
                         </div>
                     </div>
                     <div className={classes.ball_label}>
@@ -79,7 +122,7 @@ const GamePage = () => {
                 </div>
                 <div className={classes.recommendButton}>
                     <button onClick={recommendedNumberClick}> 추천 다시 받기 </button>
-                    <button onClick={recommendedNumberClick}> 로그인 하여 상세 추천 받기 </button>
+                    <button onClick={detailRecommendedNumberClick}> 상세 추천 받기 (로그인) </button>
                 </div>
             </div>
         </div>
