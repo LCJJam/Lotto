@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class MyGameDetailResponseDto {
 
-    private int id;
+    private String email;
     private int round;
     private int game_num;
 
@@ -25,7 +25,7 @@ public class MyGameDetailResponseDto {
 
     public static MyGameDetailResponseDto of(MyGameDetail myGameDetail){
         return MyGameDetailResponseDto.builder()
-                .id(myGameDetail.getId().getId())
+                .email(myGameDetail.getId().getEmail())
                 .round(myGameDetail.getId().getRound())
                 .game_num(myGameDetail.getId().getGameNum())
                 .ballNum1(myGameDetail.getBallNum1())

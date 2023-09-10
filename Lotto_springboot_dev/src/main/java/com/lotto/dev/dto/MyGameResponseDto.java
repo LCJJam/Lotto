@@ -17,7 +17,7 @@ import javax.persistence.Id;
 public class MyGameResponseDto {
 
 
-    private int id;
+    private String email;
     private int round;
 
     private int firstGameGrade;
@@ -33,8 +33,8 @@ public class MyGameResponseDto {
 
     public static MyGameResponseDto of(MyGame myGame) {
         return MyGameResponseDto.builder()
-                .id(myGame.getId())
-                .round(myGame.getRound())
+                .email(myGame.getId().getEmail())
+                .round(myGame.getId().getRound())
                 .fifthGameGrade(myGame.getFirstGameGrade())
                 .secondGameGrade(myGame.getSecondGameGrade())
                 .thirdGameGrade(myGame.getThirdGameGrade())

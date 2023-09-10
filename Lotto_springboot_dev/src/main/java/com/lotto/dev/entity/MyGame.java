@@ -12,16 +12,11 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @Table(name = "my_game")
-@IdClass(MyGameId.class)
 public class MyGame {
 
-    @Id
-    @Column
-    private int id;
+    @EmbeddedId
+    private MyGameId id;
 
-    @Id
-    @Column
-    private int round;
     
     @Column
     private int firstGameGrade;
@@ -41,11 +36,10 @@ public class MyGame {
     private String drwNoDate;
 
     @Builder
-    private MyGame(int id,int round, int firstGameGrade, int secondGameGrade,
+    private MyGame(MyGameId id, int firstGameGrade, int secondGameGrade,
                    int thirdGameGrade, int fourthGameGrade, int fifthGameGrade,
                    long totalWinings, String drwNoDate) {
         this.id = id;
-        this.round = round;
         this.firstGameGrade = firstGameGrade;
         this.secondGameGrade = secondGameGrade;
         this.thirdGameGrade = thirdGameGrade;

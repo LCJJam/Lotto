@@ -12,12 +12,12 @@ import java.io.Serializable;
 @NoArgsConstructor
 @EqualsAndHashCode
 public class MyGameDetailId implements Serializable {
-    private int id;
+    private String email;
     private int round;
     private int gameNum;
 
-    public MyGameDetailId (int id, int round){
-        this.id = id;
+    public MyGameDetailId (String email, int round){
+        this.email = email;
         this.round = round;
     }
 }

@@ -12,6 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 @Builder
 @Slf4j
 public class MyGameDetailRequestDto {
-    private int id;
+    private String email;
     private int round;
 }

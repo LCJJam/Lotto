@@ -12,6 +12,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @EqualsAndHashCode
 public class MyGameId implements Serializable {
-    private int id;
+    private String email;
     private int round;
 }

@@ -1,12 +1,14 @@
 package com.lotto.dev.service;
 
 import com.lotto.dev.dto.*;
-import com.lotto.dev.repository.GameRepository;
 import com.lotto.dev.repository.MyGameDetailRepository;
 import com.lotto.dev.repository.MyGameRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -16,20 +18,16 @@ public class MyGameService {
     private final MyGameRepository myGameRepository;
     private final MyGameDetailRepository myGameDetailRepository;
 
-    public MyGameResponseDto getMyGame(int id){
-        MyGameId myGameId = new MyGameId();
-        myGameId.setId(id);
-        myGameId.setRound(1);
-        return myGameRepository.findById(myGameId)
-                .map(MyGameResponseDto::of)
-                .orElseThrow(() -> new RuntimeException("가져올 데이터가 없습니다."));
+    public List<MyGameResponseDto> getMyGame(String email){
+        return myGameRepository.findByEmail(email).stream()
+                .map(MyGameResponseDto::of).collect(Collectors.toList());
+//                .orElseThrow(() -> new RuntimeException("가져올 데이터가 없습니다."));
     }
 
-    public MyGameDetailResponseDto getMyGameDetail(int id, int round){
-        MyGameDetailId myGameDetailId = new MyGameDetailId(id , round);
-        return myGameDetailRepository.findById(myGameDetailId)
-                .map(MyGameDetailResponseDto::of)
-                .orElseThrow(() -> new RuntimeException("가져올 데이터가 없습니다."));
+    public List<MyGameDetailResponseDto> getMyGameDetail(String email, int round){
+        return myGameDetailRepository.findByEmailAndRound(email,round).stream()
+                .map(MyGameDetailResponseDto::of).collect(Collectors.toList());
+//                .orElseThrow(() -> new RuntimeException("가져올 데이터가 없습니다."));
     }
 
 }
