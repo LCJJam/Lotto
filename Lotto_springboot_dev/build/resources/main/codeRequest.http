@@ -46,6 +46,30 @@ Content-Type: application/json
 
 // Request
 GET http://localhost:8080/member/me
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTY5MjM0MzkzNX0.Xj31PvQvcPwpMo4ufbh1kregfP4486YMeBLIr6r0_PM1scQCrytkEXEHB0EeimYPGKanso7iF2r7XgrBzP_4ng
+#Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTY5MjM0MzkzNX0.Xj31PvQvcPwpMo4ufbh1kregfP4486YMeBLIr6r0_PM1scQCrytkEXEHB0EeimYPGKanso7iF2r7XgrBzP_4ng
 
 
+###
+GET https://dhlottery.co.kr/gameResult.do?method=byWin
+
+
+###
+POST https://dhlottery.co.kr/gameResult.do?method=byWin
+Content-Type: text/html;charset=EUC-KR
+
+{
+  "drwNo": "1",
+  "dwrNoList": "1080"
+}
+
+###
+
+GET http://localhost:8080/game/round/3
+
+###
+POST http://localhost:8080/mygame
+Content-Type: application/json
+
+{
+ "id" : 1
+}

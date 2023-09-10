@@ -69,4 +69,102 @@ VALUES
     (9, 16, 20, 28, 36, 44, 7, '2023', '2023-07-13', 2200000000, 10, 11000000, 70, 700000, 140, 50000, 1100, 5000, 220, 'Sample Data 20'),
     (3,  9, 15, 21, 27, 33, 6, '2023', '2023-07-10', 1800000000, 7 , 9000000 , 60, 600000, 120, 50000, 700 , 5000, 180, 'Sample Data 21');
 
-commit
+commit;
+
+CREATE TABLE my_game (
+    id INT ,
+    round INT,
+    first_game_grade INT,
+    second_game_grade INT,
+    third_game_grade INT,
+    fourth_game_grade INT,
+    fifth_game_grade INT,
+    total_winnings long,
+    drw_no_date VARCHAR(10),
+    primary key (id, round)
+);
+
+CREATE INDEX idx_my_game on my_game (id);
+
+commit;
+
+-- 1번 데이터 삽입
+INSERT INTO my_game (id, round, first_game_grade, second_game_grade, third_game_grade, fourth_game_grade, fifth_game_grade, total_winnings, drw_no_date)
+VALUES (1, 1, 5, 10, 15, 20, 25, 50000, '2023-09-10');
+
+-- 2번 데이터 삽입
+INSERT INTO my_game (id, round, first_game_grade, second_game_grade, third_game_grade, fourth_game_grade, fifth_game_grade, total_winnings, drw_no_date)
+VALUES (2, 1, 2, 7, 14, 19, 24, 25000, '2023-09-10');
+
+-- 3번 데이터 삽입
+INSERT INTO my_game (id, round, first_game_grade, second_game_grade, third_game_grade, fourth_game_grade, fifth_game_grade, total_winnings, drw_no_date)
+VALUES (1, 2, 3, 8, 13, 18, 23, 10000, '2023-09-17');
+
+-- 4번 데이터 삽입
+INSERT INTO my_game (id, round, first_game_grade, second_game_grade, third_game_grade, fourth_game_grade, fifth_game_grade, total_winnings, drw_no_date)
+VALUES (2, 2, 1, 6, 12, 17, 22, 5000, '2023-09-17');
+
+-- 5번 데이터 삽입
+INSERT INTO my_game (id, round, first_game_grade, second_game_grade, third_game_grade, fourth_game_grade, fifth_game_grade, total_winnings, drw_no_date)
+VALUES (3, 1, 4, 9, 16, 21, 26, 75000, '2023-09-10');
+
+commit;
+
+CREATE TABLE my_game_detail (
+                                id INT ,
+                                round INT NOT NULL,
+                                game_num INT NOT NULL,
+                                ball_num1 INT NOT NULL,
+                                ball_num2 INT NOT NULL,
+                                ball_num3 INT NOT NULL,
+                                ball_num4 INT NOT NULL,
+                                ball_num5 INT NOT NULL,
+                                ball_num6 INT NOT NULL,
+                                PRIMARY KEY (id, round, game_num)
+);
+
+CREATE INDEX idx_my_game_detail on my_game_detail (id, round);
+
+commit;
+
+-- 1번 데이터 삽입
+INSERT INTO my_game_detail (id, round, game_num, ball_num1, ball_num2, ball_num3, ball_num4, ball_num5, ball_num6)
+VALUES (1, 1, 1, 5, 10, 15, 20, 25, 30);
+
+-- 2번 데이터 삽입
+INSERT INTO my_game_detail (id, round, game_num, ball_num1, ball_num2, ball_num3, ball_num4, ball_num5, ball_num6)
+VALUES (1, 1, 2, 7, 14, 19, 24, 29, 34);
+
+-- 3번 데이터 삽입
+INSERT INTO my_game_detail (id, round, game_num, ball_num1, ball_num2, ball_num3, ball_num4, ball_num5, ball_num6)
+VALUES (1, 1, 3, 9, 16, 21, 26, 31, 36);
+
+-- 4번 데이터 삽입
+INSERT INTO my_game_detail (id, round, game_num, ball_num1, ball_num2, ball_num3, ball_num4, ball_num5, ball_num6)
+VALUES (1, 2, 1, 2, 7, 12, 18, 24, 30);
+
+-- 5번 데이터 삽입
+INSERT INTO my_game_detail (id, round, game_num, ball_num1, ball_num2, ball_num3, ball_num4, ball_num5, ball_num6)
+VALUES (1, 2, 2, 4, 9, 14, 20, 26, 32);
+
+-- 6번 데이터 삽입
+INSERT INTO my_game_detail (id, round, game_num, ball_num1, ball_num2, ball_num3, ball_num4, ball_num5, ball_num6)
+VALUES (2, 1, 1, 1, 6, 11, 17, 23, 29);
+
+-- 7번 데이터 삽입
+INSERT INTO my_game_detail (id, round, game_num, ball_num1, ball_num2, ball_num3, ball_num4, ball_num5, ball_num6)
+VALUES (2, 1, 2, 3, 8, 13, 19, 25, 31);
+
+-- 8번 데이터 삽입
+INSERT INTO my_game_detail (id, round, game_num, ball_num1, ball_num2, ball_num3, ball_num4, ball_num5, ball_num6)
+VALUES (2, 2, 1, 5, 10, 15, 20, 25, 30);
+
+-- 9번 데이터 삽입
+INSERT INTO my_game_detail (id, round, game_num, ball_num1, ball_num2, ball_num3, ball_num4, ball_num5, ball_num6)
+VALUES (2, 2, 2, 7, 14, 19, 24, 29, 34);
+
+-- 10번 데이터 삽입
+INSERT INTO my_game_detail (id, round, game_num, ball_num1, ball_num2, ball_num3, ball_num4, ball_num5, ball_num6)
+VALUES (2, 2, 3, 9, 16, 21, 26, 31, 36);
+
+commit;

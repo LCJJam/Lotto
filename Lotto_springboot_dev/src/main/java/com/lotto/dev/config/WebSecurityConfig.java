@@ -57,6 +57,7 @@ public class WebSecurityConfig {
                 .antMatchers(HttpMethod.GET,"/game/**").permitAll()
                 .antMatchers("/auth/**").permitAll()
                 .antMatchers("/member/**").permitAll()
+                .antMatchers("/mygame/**").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
                 .anyRequest().authenticated()
 

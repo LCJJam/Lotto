@@ -65,3 +65,11 @@ Content-Type: text/html;charset=EUC-KR
 ###
 
 GET http://localhost:8080/game/round/3
+
+###
+POST http://localhost:8080/mygame
+Content-Type: application/json
+
+{
+ "id" : 1
+}

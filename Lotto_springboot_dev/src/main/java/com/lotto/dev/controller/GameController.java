@@ -1,7 +1,7 @@
 package com.lotto.dev.controller;
 
 import com.lotto.dev.dto.GameResponseDto;
-import com.lotto.dev.service.gameService;
+import com.lotto.dev.service.GameService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/game")
-public class gameController {
-    private final gameService gameService;
+public class GameController {
+    private final GameService gameService;
 
     @GetMapping("/round")
     public long getRound() {
