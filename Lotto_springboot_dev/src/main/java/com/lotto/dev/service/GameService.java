@@ -13,11 +13,11 @@ public class GameService {
     
     private final GameRepository gameRepository;
 
-    public long getRound() {
-        return gameRepository.count();
+    public int getRound() {
+        return (int) gameRepository.count();
     }
 
-    public GameResponseDto getBall(long round){
+    public GameResponseDto getBall(int round){
         return gameRepository.findByRound(round)
                 .map(GameResponseDto::of)
                 .orElseThrow(() -> new RuntimeException("가져올 데이터가 없습니다."));

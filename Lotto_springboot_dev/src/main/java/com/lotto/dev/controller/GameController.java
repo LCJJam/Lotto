@@ -23,7 +23,7 @@ public class GameController {
     }
 
     @GetMapping("/round/{id}")
-    public ResponseEntity<GameResponseDto> getBall(@PathVariable long id) {
+    public ResponseEntity<GameResponseDto> getBall(@PathVariable int id) {
         return ResponseEntity.ok(gameService.getBall(id));
     }
 }

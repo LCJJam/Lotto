@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long round;
+    private int round;
 
     @Column(nullable = false)
     private int ballNum1;
@@ -77,7 +77,7 @@ public class Game {
     private String etc;
 
     @Builder
-    private Game(long round, int ballNum1, int ballNum2, int ballNum3, int ballNum4, int ballNum5, int ballNum6, int bonusNum,
+    private Game(int round, int ballNum1, int ballNum2, int ballNum3, int ballNum4, int ballNum5, int ballNum6, int bonusNum,
                  String yyyy, String drwNoDate, long firstAccumamnt, int firstPrzwnerCo, int secondAccumamnt, int secondPrzwnerCo,
                  int thirdAccumamnt, int thirdPrzwnerCo, int fourthAccumamnt, int fourthPrzwnerCo, int fifthAccumamnt, int fifthPrzwnerCo, String etc) {
         this.round = round;

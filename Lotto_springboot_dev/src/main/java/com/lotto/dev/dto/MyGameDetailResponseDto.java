@@ -14,7 +14,7 @@ public class MyGameDetailResponseDto {
 
     private String email;
     private int round;
-    private int game_num;
+    private int gameNum;
 
     private int ballNum1;
     private int ballNum2;
@@ -23,17 +23,22 @@ public class MyGameDetailResponseDto {
     private int ballNum5;
     private int ballNum6;
 
+    private int gameGrade;
+    private long gameWinnings;
+
     public static MyGameDetailResponseDto of(MyGameDetail myGameDetail){
         return MyGameDetailResponseDto.builder()
                 .email(myGameDetail.getId().getEmail())
                 .round(myGameDetail.getId().getRound())
-                .game_num(myGameDetail.getId().getGameNum())
+                .gameNum(myGameDetail.getId().getGameNum())
                 .ballNum1(myGameDetail.getBallNum1())
                 .ballNum2(myGameDetail.getBallNum2())
                 .ballNum3(myGameDetail.getBallNum3())
                 .ballNum4(myGameDetail.getBallNum4())
                 .ballNum5(myGameDetail.getBallNum5())
                 .ballNum6(myGameDetail.getBallNum6())
+                .gameGrade(myGameDetail.getGameGrade())
+                .gameWinnings(myGameDetail.getGameWinnings())
                 .build();
     }
 }

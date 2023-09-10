@@ -1,6 +1,7 @@
 package com.lotto.dev.service;
 
 import com.lotto.dev.dto.*;
+import com.lotto.dev.entity.MyGame;
 import com.lotto.dev.repository.MyGameDetailRepository;
 import com.lotto.dev.repository.MyGameRepository;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +29,17 @@ public class MyGameService {
         return myGameDetailRepository.findByEmailAndRound(email,round).stream()
                 .map(MyGameDetailResponseDto::of).collect(Collectors.toList());
 //                .orElseThrow(() -> new RuntimeException("가져올 데이터가 없습니다."));
+    }
+
+    public List<MyGameDetailResponseDto> isRecommended(String email, int round){
+        if(!myGameDetailRepository.existsById(new MyGameDetailId(email,round))) {
+            // 새롭게 추천 알고리즘 후 전달.
+            return myGameDetailRepository.findByEmailAndRound(email,round).stream()
+                    .map(MyGameDetailResponseDto::of).collect(Collectors.toList());
+        } else {
+            return myGameDetailRepository.findByEmailAndRound(email,round).stream()
+                    .map(MyGameDetailResponseDto::of).collect(Collectors.toList());
+        }
     }
 
 }

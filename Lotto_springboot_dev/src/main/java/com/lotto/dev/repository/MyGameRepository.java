@@ -11,6 +11,7 @@ import java.util.List;
 @Repository
 public interface MyGameRepository extends JpaRepository<MyGame, MyGameId> {
 
-    @Query("SELECT e FROM MyGame e WHERE e.id.email = :email")
+    @Query("SELECT e FROM MyGame e WHERE e.id.email = :email ORDER BY e.id.round DESC")
     List<MyGame> findByEmail(String email);
+
 }

@@ -35,10 +35,17 @@ public class MyGameDetail {
     @Column(nullable = false)
     private int ballNum6;
 
+    @Column
+    private int gameGrade;
+
+    @Column
+    private long gameWinnings;
+
     @Builder
     private MyGameDetail(MyGameDetailId id,
                          int ballNum1,int ballNum2, int ballNum3,
-                         int ballNum4,int ballNum5, int ballNum6){
+                         int ballNum4,int ballNum5, int ballNum6,
+                         int gameGrade, long gameWinnings){
         this.id = id;
         this.ballNum1 = ballNum1;
         this.ballNum2 = ballNum2;
@@ -46,5 +53,7 @@ public class MyGameDetail {
         this.ballNum4 = ballNum4;
         this.ballNum5 = ballNum5;
         this.ballNum6 = ballNum6;
+        this.gameGrade = gameGrade;
+        this.gameWinnings = gameWinnings;
     }
 }

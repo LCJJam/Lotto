@@ -10,5 +10,6 @@ import java.util.Optional;
 public interface GameRepository extends JpaRepository<Game, Long> {
 
     long count();
-    Optional<Game> findByRound(long round);
+
+    Optional<Game> findByRound(int round);
 }

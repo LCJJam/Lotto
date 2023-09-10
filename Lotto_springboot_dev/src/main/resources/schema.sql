@@ -93,6 +93,9 @@ commit;
 INSERT INTO my_game (email, round, first_game_grade, second_game_grade, third_game_grade, fourth_game_grade, fifth_game_grade, total_winnings, drw_no_date)
 VALUES ('dlckd125@nate.com', 1, 5, 10, 15, 20, 25, 50000, '2023-09-10');
 
+INSERT INTO my_game (email, round, first_game_grade, second_game_grade, third_game_grade, fourth_game_grade, fifth_game_grade, total_winnings, drw_no_date)
+VALUES ('dlckd125@nate.com', 22, 5, 10, 15, 20, 25, 50000, '2023-09-10');
+
 -- 2번 데이터 삽입
 INSERT INTO my_game (email, round, first_game_grade, second_game_grade, third_game_grade, fourth_game_grade, fifth_game_grade, total_winnings, drw_no_date)
 VALUES ('dlckd159@gmail.com', 1, 2, 7, 14, 19, 24, 25000, '2023-09-10');
@@ -117,6 +120,8 @@ CREATE TABLE my_game_detail (
                                 ball_num4 INT NOT NULL,
                                 ball_num5 INT NOT NULL,
                                 ball_num6 INT NOT NULL,
+                                game_grade INT DEFAULT -1,
+                                game_winnings LONG DEFAULT -1,
                                 PRIMARY KEY (email, round, game_num)
 );
 
@@ -126,7 +131,7 @@ commit;
 
 -- 1번 데이터 삽입
 INSERT INTO my_game_detail (email, round, game_num, ball_num1, ball_num2, ball_num3, ball_num4, ball_num5, ball_num6)
-VALUES ('dlckd125@nate.com', 1, 1, 5, 10, 15, 20, 25, 30);
+VALUES ('dlckd125@nate.com', 1, 1, 5, 12, 18, 22, 30, 42);
 
 -- 2번 데이터 삽입
 INSERT INTO my_game_detail (email, round, game_num, ball_num1, ball_num2, ball_num3, ball_num4, ball_num5, ball_num6)
@@ -139,6 +144,9 @@ VALUES ('dlckd125@nate.com', 1, 3, 9, 16, 21, 26, 31, 36);
 -- 4번 데이터 삽입
 INSERT INTO my_game_detail (email, round, game_num, ball_num1, ball_num2, ball_num3, ball_num4, ball_num5, ball_num6)
 VALUES ('dlckd125@nate.com', 2, 1, 2, 7, 12, 18, 24, 30);
+
+INSERT INTO my_game_detail (email, round, game_num, ball_num1, ball_num2, ball_num3, ball_num4, ball_num5, ball_num6)
+VALUES ('dlckd125@nate.com', 22, 1, 2, 7, 12, 18, 24, 30);
 
 -- 5번 데이터 삽입
 INSERT INTO my_game_detail (email, round, game_num, ball_num1, ball_num2, ball_num3, ball_num4, ball_num5, ball_num6)

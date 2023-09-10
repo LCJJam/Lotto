@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class GameResponseDto {
-    private long round;
+    private int round;
 
     private int ballNum1;
     private int ballNum2;
