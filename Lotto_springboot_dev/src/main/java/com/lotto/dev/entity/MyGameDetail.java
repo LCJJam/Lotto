@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -55,5 +56,15 @@ public class MyGameDetail {
         this.ballNum6 = ballNum6;
         this.gameGrade = gameGrade;
         this.gameWinnings = gameWinnings;
+    }
+
+    public MyGameDetail(MyGameDetailId id, List<Integer> list) {
+        this.id = id;
+        this.ballNum1 = list.get(0);
+        this.ballNum2 = list.get(1);
+        this.ballNum3 = list.get(2);
+        this.ballNum4 = list.get(3);
+        this.ballNum5 = list.get(4);
+        this.ballNum6 = list.get(5);
     }
 }

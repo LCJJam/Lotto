@@ -4,11 +4,13 @@ import com.lotto.dev.dto.MyGameId;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @Table(name = "my_game")

@@ -15,9 +15,4 @@ public class MyGameDetailId implements Serializable {
     private String email;
     private int round;
     private int gameNum;
-
-    public MyGameDetailId (String email, int round){
-        this.email = email;
-        this.round = round;
-    }
 }

@@ -5,8 +5,11 @@ import com.lotto.dev.entity.MyGame;
 import com.lotto.dev.entity.MyGameDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
+@Repository
 public interface MyGameDetailRepository extends JpaRepository<MyGameDetail, MyGameDetailId> {
 
     @Query("SELECT e FROM MyGameDetail e WHERE e.id.email = :email AND e.id.round = :round")

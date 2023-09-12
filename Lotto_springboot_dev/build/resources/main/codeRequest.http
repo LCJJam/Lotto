@@ -71,5 +71,15 @@ POST http://localhost:8080/mygame
 Content-Type: application/json
 
 {
- "id" : 1
+ "email" : "dlckd125@nate.com"
+}
+
+
+###
+POST http://localhost:8080/mygame/detail
+Content-Type: application/json
+
+{
+  "email" : "dlckd125@nate.com",
+  "round" : 1
 }
