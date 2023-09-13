@@ -14,6 +14,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -47,13 +49,20 @@ public class MyGameService {
             // 새롭게 추천 알고리즘 후 전달.
             List<List<Integer>> list = new ArrayList<>();
 
-            MyGame myGameEntity = MyGame.builder().id(new MyGameId(email,round)).build();
+            // 현재 날짜를 얻기
+            LocalDate currentDate = LocalDate.now();
+            // 원하는 포맷을 설정
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            // LocalDate를 문자열로 변환
+            String formattedDate = currentDate.format(formatter);
+
+            MyGame myGameEntity = MyGame.builder().id(new MyGameId(email,round)).drwNoDate(formattedDate).build();
             myGameRepository.save(myGameEntity);
 
 
             for(int i = 0 ; i < 5 ; i++){
-//                int idx = (int) (Math.random() * 8145060) + 1;
-                int idx = (int) (Math.random() * 500) + 1;
+                int idx = (int) (Math.random() * 8145060) + 1;
+//                int idx = (int) (Math.random() * 500) + 1;
 
                 log.info("Random idx : {}",idx);
 

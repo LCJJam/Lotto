@@ -33,18 +33,18 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .httpBasic().disable()
+//                .httpBasic().disable()
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
-                .and()
-                .formLogin()
-                .usernameParameter("email")
-                .passwordParameter("password")
+//                .and()
+//                .formLogin()
+//                .usernameParameter("email")
+//                .passwordParameter("password")
 
-                .and()
-                .headers()
-                .frameOptions().disable()
+//                .and()
+//                .headers()
+//                .frameOptions().disable()
 //                .sameOrigin()
 
                 .and()
@@ -56,9 +56,9 @@ public class WebSecurityConfig {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET,"/game/**").permitAll()
                 .antMatchers("/auth/**").permitAll()
-                .antMatchers("/member/**").permitAll()
-                .antMatchers("/mygame/**").permitAll()
-                .antMatchers("/h2-console/**").permitAll()
+//                .antMatchers("/member/**").permitAll()
+//                .antMatchers("/mygame/**").permitAll()
+//                .antMatchers("/h2-console/**").permitAll()
                 .anyRequest().authenticated()
 
                 .and()
