@@ -1,13 +1,11 @@
 import React from 'react';
-import { useRef, useContext } from 'react';
+import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AuthContext from '../../store/auth-context';
 import classes from './CreateAccountForm.module.css';
 import axios from "axios";
 
 const CreateAccountForm = () => {
   let navigate = useNavigate();
-  // const authCtx = useContext(AuthContext);
   const emailInputRef = useRef<HTMLInputElement>(null);
   const passwordInputRef = useRef<HTMLInputElement>(null);
   const nicknameInputRef = useRef<HTMLInputElement>(null);
@@ -21,7 +19,7 @@ const CreateAccountForm = () => {
     // authCtx.signup(enteredEmail, enteredPassword, enteredNickname);
 
     try {
-      const response = await axios.post('/auth/signup',
+      const response = await axios.post('/api/auth/signup',
           { email: enteredEmail,
             password: enteredPassword,
             nickname: enteredNickname,

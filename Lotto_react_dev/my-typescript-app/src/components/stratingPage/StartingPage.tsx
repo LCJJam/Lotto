@@ -1,6 +1,6 @@
 import React , { useState , useEffect } from "react";
 import classes from './StartingPage.module.css'
-import { GET } from "@store/fetch-get-action"
+import { GET } from "@store/fetch-auth-action"
 import Select from 'react-select'
 const StartingPage = () => {
     const ballColor = (ball : string) => `${classes.ball_645} + ${ball}`;
@@ -40,9 +40,9 @@ const StartingPage = () => {
 
     /* eslint-disable */
     useEffect(() => {
-        GET("/game/round").then(
+        GET("/game/round", {}).then(
             res => {
-                const maxNum : number = res.data;
+                const maxNum : number = res?.data;
                 setMaxRound(maxNum);
                 setSelectedOptions({value: maxNum,label: maxNum});
             }
@@ -50,9 +50,9 @@ const StartingPage = () => {
     },[]);
 
     useEffect(() => {
-        GET("/game/round/"+curRound).then(
-            res => {
-                // setCurRound(res.data);
+        GET("/game/round/"+curRound, {}).then(
+            res  => {
+                console.log(res)
                 let a = selectedOptions.value;
                 setBall(a);
             }
@@ -61,9 +61,9 @@ const StartingPage = () => {
     },[selectedOptions]);
 
     const setBall = (curRounds : number) => {
-        GET("/game/round/"+curRounds).then(
+        GET("/game/round/"+curRounds, {}).then(
             res => {
-                setGames(res.data);
+                setGames(res?.data);
             }
         );
     };
@@ -99,18 +99,18 @@ const StartingPage = () => {
 
     const formatNumberWithCommas = (num : number) => {
         // 숫자를 문자열로 변환
-        const numberString = num.toString();
+        const numberString : string = num?.toString();
 
         // 문자열을 3자리씩 끊어 배열로 만듭니다.
-        const parts = [];
+        const parts : any[] = [];
         for (let i = numberString.length; i > 0; i -= 3) {
-            const start = Math.max(0, i - 3);
-            const part = numberString.substring(start, i);
+            const start : number = Math.max(0, i - 3);
+            const part : string = numberString.substring(start, i);
             parts.unshift(part);
         }
 
         // 배열을 쉼표로 합쳐서 결과 문자열을 생성
-        const formattedNumber = parts.join(',');
+        const formattedNumber : string = parts.join(',');
         return formattedNumber;
     }
 
@@ -137,19 +137,25 @@ const StartingPage = () => {
                         <div className={classes.win}>
                             <p>
                                 <span className={ballColors(games.ballNum1)}>{games.ballNum1}</span>
+                            </p>
+                            <p>
                                 <span className={ballColors(games.ballNum2)}>{games.ballNum2}</span>
+                            </p>
+                            <p>
                                 <span className={ballColors(games.ballNum3)}>{games.ballNum3}</span>
+                            </p>
+                            <p>
                                 <span className={ballColors(games.ballNum4)}>{games.ballNum4}</span>
+                            </p>
+                            <p>
                                 <span className={ballColors(games.ballNum5)}>{games.ballNum5}</span>
+                            </p>
+                            <p>
                                 <span className={ballColors(games.ballNum6)}>{games.ballNum6}</span>
                             </p>
-                        </div>
-                        <div className={classes.plus_sign}>
                             <p>
                                 <span> + </span>
                             </p>
-                        </div>
-                        <div className={classes.bonus}>
                             <p>
                                 <span className={ballColors(games.bonusNum)}>{games.bonusNum}</span>
                             </p>
@@ -157,7 +163,6 @@ const StartingPage = () => {
                     </div>
                     <div className={classes.ball_label}>
                         <div className={classes.ball_label_win}> 당첨 번호 </div>
-                        <div className={classes.ball_label_bonus}></div>
                         <div className={classes.ball_label_bonus}> 보너스 번호 </div>
                     </div>
                 </div>

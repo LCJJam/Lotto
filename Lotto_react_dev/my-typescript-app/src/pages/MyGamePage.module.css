@@ -11,8 +11,6 @@
 
 }
 
-
-
 .table_thead tr th {
     padding: 13px 9px 15px;
     color: skyblue;
@@ -64,4 +62,16 @@
 
 .ball_645 .ball5 {
     background: #5ab545;
+}
+
+/* 반응형 스타일 설정 */
+@media (max-width: 600px) {
+    .tbl_data {
+        font-size: 9px;
+    }
+
+    .ball_645 {
+        font-size: 14px;
+        padding: 5px;
+    }
 }

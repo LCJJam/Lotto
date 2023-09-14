@@ -95,3 +95,35 @@ export const changePasswordActionHandler = (
   const response = POST(URL, changePasswordObj, createTokenHeader(token));
   return response;
 };
+
+export const recommendedActionHandler = (
+  email: string,
+  token: string,
+) => {
+    const URL = '/mygame/recommended';
+    const recommendedObj = { email };
+    const response = POST(URL, recommendedObj, createTokenHeader(token));
+    return response;
+};
+
+export const getMyPageActionHandler = (
+  email: string,
+  token: string,
+) => {
+    const URL = '/mygame';
+    const myGameObj = { email };
+    const response = POST(URL, myGameObj, createTokenHeader(token));
+    return response;
+};
+
+export const getMyPageDetailActionHandler = (
+  item : { email: string, round: number },
+  token: string,
+) => {
+    const URL = '/mygame/detail';
+    const myGameObj = item;
+    const response = POST(URL, myGameObj, createTokenHeader(token));
+    return response;
+};
+
+

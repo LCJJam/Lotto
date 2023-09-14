@@ -2,8 +2,7 @@ import React, {useContext, useState} from 'react';
 import classes from "./GamePage.module.css";
 import AuthContext from "@store/auth-context";
 import { useNavigate } from "react-router-dom"
-import axios from "axios";
-import { POST } from '@store/fetch-post-action';
+import * as authAction from '@store/auth-action';
 
 
 const GamePage = () => {
@@ -30,7 +29,6 @@ const GamePage = () => {
         }
     }
 
-    const [count, setCount] = useState(0);
     const [isRecommended , setIsRecommended] = useState(false);
     const [viewForm , setViewForm] = useState([['']]);
 
@@ -55,7 +53,7 @@ const GamePage = () => {
     const reRecommendView = ()  => {
         if(isRecommended) {
             return viewForm.map((item : any) =>
-                <div key={item}>
+                <div key={item.gameNum}>
                     <p>
                         <span> {item.gameNum} : </span>
                             <span className={ballColors(item.ballNum1)}>{item.ballNum1}</span>
@@ -84,22 +82,19 @@ const GamePage = () => {
     }
 
     const recommendedNumberClick = () => {
-        setCount(count+1);
+        setViewForm([[]])
+        setIsRecommended(false);
     }
 
     const detailRecommendedNumberClick = () => {
         if(authCtx.isLoggedIn) {
-            POST("/mygame/recommended", authCtx.userObj.email).then(
-                res => {
-                    if(!res.data) {
-                        alert("이미 추천 받았습니다!");
-                    } else {
-                        alert("번호가 추천 되었습니다.")
-                        setViewForm(res.data);
-                        setIsRecommended(true);
-                    }
-                }
-            );
+            const data = authAction.recommendedActionHandler(authCtx.userObj.email, authCtx.token);
+            data.then((result) => {
+                alert("번호가 추천 되었습니다.")
+                setViewForm(result?.data);
+                setIsRecommended(true);
+            })
+
         } else {
             navigate('/login', { replace: true });
         }
@@ -123,6 +118,15 @@ const GamePage = () => {
                 <div className={classes.recommendButton}>
                     <button onClick={recommendedNumberClick}> 추천 다시 받기 </button>
                     <button onClick={detailRecommendedNumberClick}> 상세 추천 받기 (로그인) </button>
+                    <p>
+                        <span className={classes.tooltip}> 상세 추천이란 ?
+                            <span className={classes.tooltip_text}>
+                                1. 번호가 겹치지 않게 DB에서 추첨해줍니다. <br/>
+                                2. 주 1회 사용 가능합니다. <br/>
+                                3. 이미 추천받은 사람은 추천된 번호로 보여집니다.
+                            </span>
+                        </span>
+                    </p>
                 </div>
             </div>
         </div>

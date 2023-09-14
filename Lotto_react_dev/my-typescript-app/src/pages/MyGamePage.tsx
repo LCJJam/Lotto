@@ -1,7 +1,6 @@
 import React , { useContext , useEffect , useState } from 'react';
 import AuthContext from "@store/auth-context";
-import { POST } from "@store/fetch-post-action"
-import { GET } from "@store/fetch-get-action"
+import * as authAction from "@store/auth-action"
 import classes from "./MyGamePage.module.css";
 
 const MyGamePage = () => {
@@ -9,33 +8,6 @@ const MyGamePage = () => {
     const authCtx = useContext(AuthContext);
 
     const [myGames, setMyGames] = useState([]);
-    const [games, setGames] = useState({
-        round: 1,
-        ballNum1: 1,
-        ballNum2: 2,
-        ballNum3: 3,
-        ballNum4: 4,
-        ballNum5: 5,
-        ballNum6: 6,
-        bonusNum: 7,
-
-        drwNoDate: '',
-
-        firstAccumamnt: 0,
-        secondAccumamnt: 0,
-        thirdAccumamnt: 0,
-        fourthAccumamnt: 0,
-        fifthAccumamnt: 0,
-
-        firstPrzwnerCo: 0,
-        secondPrzwnerCo: 0,
-        thirdPrzwnerCo: 0,
-        fourthPrzwnerCo: 0,
-        fifthPrzwnerCo: 0,
-
-        etc: '',
-
-    });
 
     const [selectRow, setSelectRow] = useState([]);
     const [viewRow, setViewRow] = useState([]);
@@ -60,22 +32,20 @@ const MyGamePage = () => {
 
     /* eslint-disable */
     useEffect(() => {
-        POST("/mygame",authCtx.userObj.email).then(
-            res => {
-                setMyGames(res.data)
+        const data = authAction.getMyPageActionHandler(authCtx.userObj.email, authCtx.token);
+        data.then((res : any) => {
+                setMyGames(res?.data)
             }
         );
     },[]);
 
     const handleCellClick = (item: any) => {
-        POST("/mygame/detail", { email: item.email , round: item.round }  ).then(
-            res => {
-                setSelectRow(selectRow === item ? null : item);
-                setViewRow(res.data)
-            }
-        );
+        const data = authAction.getMyPageDetailActionHandler( { email: item.email , round: item.round }, authCtx.token);
 
-
+        data.then((res : any) => {
+            setSelectRow(selectRow === item ? null : item);
+            setViewRow(res?.data)
+        });
     }
 
     return (
@@ -108,9 +78,10 @@ const MyGamePage = () => {
                             </tr>
                             {selectRow === item && (
                                 viewRow.map((item : any) => (
-                                        <tr>
+
+                                        <tr key={item.gameNum}>
                                             <td>
-                                                Game{item.gameNum}
+                                                Game {item.gameNum+1}
                                             </td>
                                             <td colSpan={5}>
                                                 <div className={classes.ball_645}>
@@ -124,12 +95,12 @@ const MyGamePage = () => {
                                             </td>
                                             <td>
                                                 {item.gameGrade <= 0 || item.gameGrade === undefined ? (
-                                                    item.gameGrade === -1 ? '준비중' : '꽝')
+                                                    item.gameGrade === 0 ? '등수 준비중' : '꽝')
                                                     : item.gameGrade + '등'}
                                             </td>
                                             <td>
                                                 {item.gameWinnings <= 0 || item.gameWinnings === undefined ? (
-                                                    item.gameWinnings === -1 ? '준비중' : '꽝' )
+                                                    item.gameWinnings === 0 ? '당첨금 준비중' : '꽝' )
                                                     :  item.gameWinnings + '원 당첨 !' }
                                             </td>
                                         </tr>

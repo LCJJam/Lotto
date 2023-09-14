@@ -2,82 +2,71 @@
 
 .header {
     display: flex;
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     box-sizing: border-box;
     padding: 10px 0;
 }
 
 /* 반응형 스타일 설정 */
-@media (max-width: 800px) {
+@media (max-width: 500px) {
     .header {
         width: 100%; /* 500px 이하에서는 100%로 설정 */
-        max-width: 800px; /* 최대 너비 500px로 제한 */
     }
 }
 
 .logo {
-    text-decoration: none;
+    align-items: center;
+    justify-content: center;
     display: flex;
+    width: 30%;
+}
+
+@media (min-width: 400px) {
+    .logo {
+        width: 200px;
+    }
 }
 
 .logo img {
-    width: 120px;
+    width: 90%;
 }
 
 .game {
-    margin-left: auto;
-    align-items: center;
-    display: flex;
+    display: inline-flex;
     color: #ffffff;
+    Justify-content: center;
+    width: 80%;
+    max-height: 150px;
+}
+
+@media (max-width: 400px) {
+    .game {
+        width: 400px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+    }
 }
 
 .game img {
-    width: 200px;
+    width: 100%;
+    display: flex;
 }
 
-.nav {
-    margin-left: auto; /* 변경된 부분: 우측으로 정렬 */
+.game .game_label {
+    position: absolute;
+    top: 9%;
+    left: 55%;
+    color: #cc1869;
+    background-color: #ffffff;
+    font-weight: bold;
+    transform: translate(-50%, -50%);
+}
+
+.hamburgerMenu {
+    width: 20%;
     display: flex;
     align-items: center;
-}
-
-.nav ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.nav li {
-    line-height: 50px;
-    margin: 0 15px;
-}
-
-.signUp {
-    border-radius: 30px;
-    border: 1px solid white;
-}
-
-.nav a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-}
-
-.nav button {
-    display: inline-block;
-    padding: 8px 16px;
-    border: none;
-    color: red;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-}
-
-.nav button:hover {
-    background-color: #999;
+    justify-content: center;
 }

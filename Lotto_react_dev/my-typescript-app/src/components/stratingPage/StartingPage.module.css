@@ -2,17 +2,11 @@
     display: block;
     box-sizing: border-box;
     margin: 0 auto;
-    width: 80%;
+    width: 100%;
+    font-size: 15px;
     /*width: 70%;*/
 }
 
-/* 반응형 스타일 설정 */
-@media (max-width: 800px) {
-    .content_wrap {
-        width: 100%; /* 500px 이하에서는 100%로 설정 */
-        max-width: 800px; /* 최대 너비 500px로 제한 */
-    }
-}
 
 .search_data {
     margin-bottom: 10px;
@@ -34,7 +28,6 @@
 }
 
 .search_form button {
-    margin: 10px 10px;
     color: white;
     background-color: #337ab7;
 }
@@ -44,82 +37,63 @@
     border-top: 1px solid #ddd;
     background-color: #ffffff80;
     text-align: center;
-    margin-bottom: 40px;
-    padding: 30px 0;
+    margin-bottom: 2%;
+    padding: 2% 0;
     box-sizing: border-box;
+    font-size: 1rem;
 }
+
 
 .win_results h4 strong {color: red; font-weight: bold}
 
 .nums {
     display: block;
     box-sizing: border-box;
-    margin-top: 26px;
+    margin-top: 3%;
 }
 
 .ball_645 {
     width: 100%;
-    font-weight: 700;
-    font-size: 28px;
     color: #ffffff;
     justify-content: center;
     display: flex;
 }
 
 .ball_645 p {
-    padding: 30px;
+    width: 100%;
+    padding: 1%;
     margin: 0;
-    border-radius: 30px;
-    font-weight: 300;
-    line-height: 22px;
-    background-color: #eadada;
 }
 
-.ball_645 p span {
+.ball_645 p span{
     float: left;
-    width: 60px;
-    height: 60px;
-    line-height: 60px;
-    font-size: 28px;
-    border-radius: 100%;
-    background-color: #eadada;
-    margin: 10px;
+    width: 100%;
+    font-size: 2rem;
+    border-radius: 50%;
+    margin: 2%;
+    padding: 3%;
 }
 
-.win p {
-    float: left;
-}
-
-.plus_sign p {
-    float: left;
-    color: black;
-    background-color: #ffffff00;
-}
-
-.bonus p {
-    float: left;
+.ball_645 .win {
+    width: 80%;
+    color: #ffffff;
+    display: flex;
 }
 
 .ball_label {
     display: flex;
     font-weight: bold;
-    margin: 10px auto;
     width: 100%;
 }
 
-@media (min-width: 500px) {
-    .ball_label {
-        width: 100%; /* 500px 이하에서는 100%로 설정 */
-        max-width: 800px; /* 최대 너비 500px로 제한 */
-    }
-}
-
 .ball_label_win {
-    width: 70%;
+    width: 80%;
+    text-align: center;
 }
 
 .ball_label_bonus {
-    width: 15%;
+    text-align: center;
+    width: 11%;
 }
 
 /*.bonus:before {*/
@@ -162,7 +136,7 @@
     display: table;
     box-sizing: border-box;
     text-indent: initial;
-
+    font-size: 0.5rem;
 }
 
 .table_thead tr th {
@@ -190,22 +164,42 @@
 }
 
 .col1 {
-    width: 85px;
+    width: 10%;
 }
 
 .col2 {
-    width: 180px;
+    width: 22%;
 }
 
 .col3 {
-    width: 145px;
+    width: 15%;
 }
 
 .col4 {
-    width: 180px;
+    width: 20%;
 }
 
 .col5 {
-    width: 110px;
+    width: 8%;
 }
 
+/* 반응형 스타일 설정 */
+@media (min-width: 600px) {
+    .content_wrap {
+        width: 100%; /* 500px 이하에서는 100%로 설정 */
+        max-width: 1200px; /* 최대 너비 500px로 제한 */
+        font-size: 16px;
+    }
+
+    .win_results {
+        font-size: 1rem;
+    }
+
+    .ball_645 p span{
+        font-size: 2.5rem;
+    }
+
+    .tbl_data {
+        font-size: 0.8rem;
+    }
+}
