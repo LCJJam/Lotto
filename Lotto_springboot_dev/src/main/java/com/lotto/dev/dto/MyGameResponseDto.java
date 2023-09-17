@@ -1,14 +1,10 @@
 package com.lotto.dev.dto;
 
-import com.lotto.dev.entity.Member;
 import com.lotto.dev.entity.MyGame;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.Column;
-import javax.persistence.Id;
 
 @Getter
 @AllArgsConstructor
@@ -33,8 +29,8 @@ public class MyGameResponseDto {
 
     public static MyGameResponseDto of(MyGame myGame) {
         return MyGameResponseDto.builder()
-                .email(myGame.getId().getEmail())
-                .round(myGame.getId().getRound())
+                .email(myGame.getEmail())
+                .round(myGame.getRound())
                 .fifthGameGrade(myGame.getFirstGameGrade())
                 .secondGameGrade(myGame.getSecondGameGrade())
                 .thirdGameGrade(myGame.getThirdGameGrade())

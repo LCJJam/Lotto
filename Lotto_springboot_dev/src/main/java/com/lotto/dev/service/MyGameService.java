@@ -32,19 +32,19 @@ public class MyGameService {
     private final LottoBallRepository lottoBallRepository;
 
     public List<MyGameResponseDto> getMyGame(String email){
-        return myGameRepository.findByEmail(email).stream()
+        return myGameRepository.findByEmailOrderByRoundDesc(email).stream()
                 .map(MyGameResponseDto::of).collect(Collectors.toList());
 //                .orElseThrow(() -> new RuntimeException("가져올 데이터가 없습니다."));
     }
 
     public List<MyGameDetailResponseDto> getMyGameDetail(String email, int round){
-        return myGameDetailRepository.findByEmailAndRound(email,round).stream()
+        return myGameDetailRepository.findByEmailAndRoundOrderByGameNum(email,round).stream()
                 .map(MyGameDetailResponseDto::of).collect(Collectors.toList());
 //                .orElseThrow(() -> new RuntimeException("가져올 데이터가 없습니다."));
     }
 
     public List<MyGameDetailResponseDto> isRecommended(String email, int round){
-        if(!myGameDetailRepository.existsById(new MyGameDetailId(email,round,0))) {
+        if(!myGameDetailRepository.existsByEmailAndRound(email,round)) {
 
             // 새롭게 추천 알고리즘 후 전달.
             List<List<Integer>> list = new ArrayList<>();
@@ -56,7 +56,7 @@ public class MyGameService {
             // LocalDate를 문자열로 변환
             String formattedDate = currentDate.format(formatter);
 
-            MyGame myGameEntity = MyGame.builder().id(new MyGameId(email,round)).drwNoDate(formattedDate).build();
+            MyGame myGameEntity = MyGame.builder().email(email).round(round).drwNoDate(formattedDate).build();
             myGameRepository.save(myGameEntity);
 
 
@@ -94,7 +94,9 @@ public class MyGameService {
                 tmp.add(lottoBall.get(0).getBallNum6());
 
                 MyGameDetail myGameDetailEntity = MyGameDetail.builder()
-                        .id(new MyGameDetailId(email,round,i))
+                        .email(email)
+                        .round(round)
+                        .gameNum(i)
                         .ballNum1(lottoBall.get(0).getBallNum1())
                         .ballNum2(lottoBall.get(0).getBallNum2())
                         .ballNum3(lottoBall.get(0).getBallNum3())
@@ -110,7 +112,7 @@ public class MyGameService {
 
             return list.stream().map(MyGameDetailResponseDto::intListToDto).collect(Collectors.toList());
         } else {
-            return myGameDetailRepository.findByEmailAndRound(email,round).stream()
+            return myGameDetailRepository.findByEmailAndRoundOrderByGameNum(email,round).stream()
                     .map(MyGameDetailResponseDto::of).collect(Collectors.toList());
         }
     }

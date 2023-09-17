@@ -58,6 +58,22 @@ POST https://dhlottery.co.kr/gameResult.do?method=byWin
 Content-Type: text/html;charset=EUC-KR
 
 {
+  "drwNo": "1081"
+}
+
+###
+POST https://www.dhlottery.co.kr/userSsl.do?method=getMainBannerList
+Content-Type: text/html;charset=EUC-KR
+
+{
+  "drwNo": "2"
+}
+
+###
+POST https://www.dhlottery.co.kr/ecRegistAccount.do?method=guide
+Content-Type: text/html;charset=EUC-KR
+
+{
   "drwNo": "1",
   "dwrNoList": "1080"
 }
@@ -82,4 +98,12 @@ Content-Type: application/json
 {
   "email" : "dlckd125@nate.com",
   "round" : 1
+}
+
+###
+POST http://218.145.93.222/api/mygame/recommended
+Content-Type: application/json
+
+{
+  "email: asd@gmail.com"
 }

@@ -1,92 +1,94 @@
-CREATE TABLE MEMBER (
-                        ID INT PRIMARY KEY AUTO_INCREMENT,
-                        NICKNAME VARCHAR(50) NOT NULL,
-                        EMAIL VARCHAR(100) NOT NULL,
-                        PASSWORD VARCHAR(100) NOT NULL ,
-                        AUTHORITY VARCHAR(20) ,
-                        REGISTRATION_DATE TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                        LAST_LOGIN TIMESTAMP,
-                        IS_ACTIVE BOOLEAN DEFAULT TRUE
+create table member (
+                        id int primary key auto_increment,
+                        nickname varchar(50) not null,
+                        email varchar(100) not null,
+                        password varchar(100) not null ,
+                        authority varchar(20) ,
+                        registration_date timestamp default current_timestamp,
+                        last_login timestamp,
+                        is_active boolean default true
 );
 
-CREATE TABLE GAME (
-                      ROUND INT AUTO_INCREMENT PRIMARY KEY,
-                      BALL_NUM1 INT NOT NULL,
-                      ballNum2 INT NOT NULL,
-                      BALL_NUM3 INT NOT NULL,
-                      BALL_NUM4 INT NOT NULL,
-                      BALL_NUM5 INT NOT NULL,
-                      BALL_NUM6 INT NOT NULL,
-                      BONUS_NUM INT NOT NULL,
-                      YYYY VARCHAR(4),
-                      DRW_NO_DATE VARCHAR(10),
-                      FIRST_ACCUMAMNT LONG,
-                      FIRST_PRZWNER_CO INT,
-                      SECOND_ACCUMAMNT INT,
-                      SECOND_PRZWNER_CO INT,
-                      THIRD_ACCUMAMNT INT,
-                      THIRD_PRZWNER_CO INT,
-                      FOURTH_ACCUMAMNT INT,
-                      FOURTH_PRZWNER_CO INT,
-                      FIFTH_ACCUMAMNT INT,
-                      FIFTH_PRZWNER_CO INT,
-                      ETC VARCHAR(50)
+create table game (
+                      round int auto_increment primary key,
+                      ball_num1 int not null,
+                      ballnum2 int not null,
+                      ball_num3 int not null,
+                      ball_num4 int not null,
+                      ball_num5 int not null,
+                      ball_num6 int not null,
+                      bonus_num int not null,
+                      yyyy varchar(4),
+                      drw_no_date varchar(10),
+                      first_accumamnt long,
+                      first_przwner_co int,
+                      second_accumamnt int,
+                      second_przwner_co int,
+                      third_accumamnt int,
+                      third_przwner_co int,
+                      fourth_accumamnt int,
+                      fourth_przwner_co int,
+                      fifth_accumamnt int,
+                      fifth_przwner_co int,
+                      etc varchar(50)
 );
 
-CREATE TABLE MY_GAME (
-                         EMAIL VARCHAR(100) ,
-                         ROUND INT,
-                         FIRST_GAME_GRADE INT,
-                         SECOND_GAME_GRADE INT,
-                         THIRD_GAME_GRADE INT,
-                         FOURTH_GAME_GRADE INT,
-                         FIFTH_GAME_GRADE INT,
-                         TOTAL_WINNINGS LONG,
-                         DRW_NO_DATE VARCHAR(10) DEFAULT DATE_FORMAT(NOW(),'%Y-%m-%d'),
-                         PRIMARY KEY (EMAIL, ROUND)
+create table my_game (
+                         my_game_id long auto_increment primary key,
+                         email varchar(100) ,
+                         round int,
+                         first_game_grade int,
+                         second_game_grade int,
+                         third_game_grade int,
+                         fourth_game_grade int,
+                         fifth_game_grade int,
+                         total_winnings long,
+                         drw_no_date varchar(10) default date_format(now(),'%y-%m-%d')
 );
 
-CREATE INDEX IDX_MY_GAME ON MY_GAME (EMAIL);
+create index idx_my_game_01 on my_game (email);
+create index idx_my_game_02 on my_game (round);
 
 
-CREATE TABLE MY_GAME_DETAIL (
-                                EMAIL VARCHAR(100) ,
-                                ROUND INT NOT NULL,
-                                GAME_NUM INT NOT NULL,
-                                BALL_NUM1 INT NOT NULL,
-                                BALL_NUM2 INT NOT NULL,
-                                BALL_NUM3 INT NOT NULL,
-                                BALL_NUM4 INT NOT NULL,
-                                BALL_NUM5 INT NOT NULL,
-                                BALL_NUM6 INT NOT NULL,
-                                GAME_GRADE INT DEFAULT -1,
-                                GAME_WINNINGS LONG DEFAULT -1,
-                                PRIMARY KEY (EMAIL, ROUND, GAME_NUM)
+create table my_game_detail (
+                                my_game_detail_id long auto_increment primary key,
+                                email varchar(100) ,
+                                round int not null,
+                                game_num int not null,
+                                ball_num1 int not null,
+                                ball_num2 int not null,
+                                ball_num3 int not null,
+                                ball_num4 int not null,
+                                ball_num5 int not null,
+                                ball_num6 int not null,
+                                game_grade int default -1,
+                                game_winnings long default null
 );
 
-CREATE INDEX IDX_MY_GAME_DETAIL ON MY_GAME_DETAIL (EMAIL, ROUND);
+create index idx_my_game_detail_01 on my_game_detail (email, round);
+create index idx_my_game_detail_02 on my_game_detail (round);
 
 
-CREATE TABLE LOTTO_BALL (
-                            NUMBER_ID INT AUTO_INCREMENT NOT NULL,
-                            BALL_NUM1 INT NOT NULL,
-                            BALL_NUM2 INT NOT NULL,
-                            BALL_NUM3 INT NOT NULL,
-                            BALL_NUM4 INT NOT NULL,
-                            BALL_NUM5 INT NOT NULL,
-                            BALL_NUM6 INT NOT NULL,
-                            NUMBER_WEIGHT INT,
-                            PRIMARY KEY (NUMBER_ID)
+create table lotto_ball (
+                            number_id int auto_increment not null,
+                            ball_num1 int not null,
+                            ball_num2 int not null,
+                            ball_num3 int not null,
+                            ball_num4 int not null,
+                            ball_num5 int not null,
+                            ball_num6 int not null,
+                            number_weight int,
+                            primary key (number_id)
 );
 
-CREATE INDEX IDX_LOTTO_BALL ON LOTTO_BALL (NUMBER_WEIGHT);
-CREATE INDEX IDX_LOTTO_BALL_NUM ON LOTTO_BALL (BALL_NUM1, BALL_NUM2, BALL_NUM3, BALL_NUM4, BALL_NUM5, BALL_NUM6);
+create index idx_lotto_ball on lotto_ball (number_weight);
+create index idx_lotto_ball_num on lotto_ball (ball_num1, ball_num2, ball_num3, ball_num4, ball_num5, ball_num6);
 
 
-CREATE TABLE TMP (
-                     ID INT PRIMARY KEY,
-                     TARGET VARCHAR(100) DEFAULT NULL
+create table tmp (
+                     id int primary key,
+                     target varchar(100) default null
 );
-CREATE INDEX IDX_TMP ON TMP(TARGET);
+create index idx_tmp on tmp(target);
 
-COMMIT;
+commit;

@@ -10,10 +10,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface MyGameDetailRepository extends JpaRepository<MyGameDetail, MyGameDetailId> {
+public interface MyGameDetailRepository extends JpaRepository<MyGameDetail, Long> {
 
-    @Query("SELECT e FROM MyGameDetail e WHERE e.id.email = :email AND e.id.round = :round")
-    List<MyGameDetail> findByEmailAndRound(String email, int round);
+    List<MyGameDetail> findByEmailAndRoundOrderByGameNum(String email, int round);
 
-    boolean existsById(MyGameDetailId id);
+    boolean existsByEmailAndRound(String email, int round);
 }
