@@ -9,9 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface MyGameRepository extends JpaRepository<MyGame, MyGameId> {
-
-    @Query("SELECT e FROM MyGame e WHERE e.id.email = :email ORDER BY e.id.round DESC")
-    List<MyGame> findByEmail(String email);
+public interface MyGameRepository extends JpaRepository<MyGame, Long> {
+    List<MyGame> findByEmailOrderByRoundDesc(String email);
 
 }

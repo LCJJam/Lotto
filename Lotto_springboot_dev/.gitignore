@@ -1,5 +1,7 @@
 Lotto_springboot_dev/.idea/
 Lotto_springboot_dev/.gradle/
+Lotto_springboot_dev/build/*
+
 application-oauth.properties
 *.class
 *.bin

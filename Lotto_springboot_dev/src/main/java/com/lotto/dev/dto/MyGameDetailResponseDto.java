@@ -14,6 +14,7 @@ import java.util.List;
 @Builder
 public class MyGameDetailResponseDto {
 
+    private long id;
     private String email;
     private int round;
     private int gameNum;
@@ -30,9 +31,10 @@ public class MyGameDetailResponseDto {
 
     public static MyGameDetailResponseDto of(MyGameDetail myGameDetail){
         return MyGameDetailResponseDto.builder()
-                .email(myGameDetail.getId().getEmail())
-                .round(myGameDetail.getId().getRound())
-                .gameNum(myGameDetail.getId().getGameNum())
+                .id(myGameDetail.getId())
+                .round(myGameDetail.getRound())
+                .email(myGameDetail.getEmail())
+                .gameNum(myGameDetail.getGameNum())
                 .ballNum1(myGameDetail.getBallNum1())
                 .ballNum2(myGameDetail.getBallNum2())
                 .ballNum3(myGameDetail.getBallNum3())
