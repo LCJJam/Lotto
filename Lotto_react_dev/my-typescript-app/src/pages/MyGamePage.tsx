@@ -30,6 +30,19 @@ const MyGamePage = () => {
         }
     }
 
+    const NumberToWon = (num : string) => {
+        let tmpNum = parseInt(num);
+        let str = '';
+        let tmpNum1  = Math.floor(tmpNum / 100000000);
+        let tmpNum2 = Math.floor((tmpNum % 100000000) / 10000);
+        let tmpNum3 = Math.floor((tmpNum % 1000000000) % 10000);
+        tmpNum1 == 0 ? str = '' : str = tmpNum1 + "억 "
+        tmpNum2 == 0 ? str += '' : str += tmpNum2 + "만 "
+        tmpNum3 == 0 ? str += '' : str += tmpNum3
+
+        return str;
+    }
+
     /* eslint-disable */
     useEffect(() => {
         const data = authAction.getMyPageActionHandler(authCtx.userObj.email, authCtx.token);
@@ -101,7 +114,7 @@ const MyGamePage = () => {
                                             <td>
                                                 {item.gameWinnings <= 0 || item.gameWinnings === undefined ? (
                                                     item.gameWinnings === 0 ? '당첨금 준비중' : '꽝' )
-                                                    :  item.gameWinnings + '원 당첨 !' }
+                                                    :  NumberToWon(item.gameWinnings) + '원 당첨 !' }
                                             </td>
                                         </tr>
                                     ))
